@@ -1,0 +1,7 @@
+*.pyc
+*~
+__pycache__
+myvenv
+myammaji
+/static
+.DS_Store
