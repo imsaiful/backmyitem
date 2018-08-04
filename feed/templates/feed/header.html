@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Back My Item</title>
+    <meta charset="utf-8">
+    <style>
+
+        .mynav , .navbar-default {
+                    background-color: #FFFFFF!important;
+                    border-color: #E7E7E7;
+                }
+        .mynav{
+           height: 50%;
+        }
+
+        body {
+                background-color: #F8F8F8!important;
+                margin-top: 65px;
+            }
+            .navbar-brand{
+              color:red!important;
+               font-weight: bold;
+            }
+        .mytable{
+           border-collapse: separate;
+            border-spacing: 15px 15px;
+            border: 0px !important;
+        }
+        .my-td-item{
+          color:red;
+        }
+input[type=text], select, textarea {
+  width: 80%;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+    padding: 2px 2px 2px 0;
+    display: inline-block;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.report-btn{
+    width:100%;
+    padding:10px;
+    margin:10px;
+}
+    </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">BackMyItem</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Report</a></li>
+        <li><a href="#">Notification</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <form class="navbar-form navbar-right" action="/action_page.php">
+          <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search lost item"/>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>

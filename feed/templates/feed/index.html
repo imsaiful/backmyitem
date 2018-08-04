@@ -1,0 +1,27 @@
+{% extends "feed/base.html" %}
+{% block content %}
+<div class="container">
+<div class="row">
+  <div class="col-md-3">
+  </div>
+
+  <div class="col-md-6">
+
+      {% for obj in object_list %}
+      <div class="thumbnail">
+          <table class="mytable table-responsive">
+            <tr><td class="my-td-item">Item Name</td><td>{{ obj.item_name }}</td></tr>
+            <tr><td class="my-td-item">Location</td><td>{{ obj.location }}</td></tr>
+            <tr><td class="my-td-item">Date</td><td>{{ obj.date }}</td></tr>
+            <tr><td class="my-td-item">Category</td><td>{{ obj.category }}</td></tr>
+            <tr><td class="my-td-item">Description</td><td>{{ obj.Description }}</td></tr>
+          </table>
+      </div>
+      {% endfor %}
+  </div>
+
+  <div class="col-md-3">
+  </div>
+  </div>
+</div>
+ {% endblock %}
