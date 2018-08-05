@@ -8,14 +8,18 @@
   <div class="col-md-6">
 
       {% for obj in object_list %}
-      <div class="thumbnail">
+      <div class="thumbnail" onclick="window.open('{% url 'feed:detail' obj.id %}','mywindow');" style="cursor: pointer;">
           <table class="mytable table-responsive">
             <tr><td class="my-td-item">Item Name</td><td>{{ obj.item_name }}</td></tr>
             <tr><td class="my-td-item">Location</td><td>{{ obj.location }}</td></tr>
             <tr><td class="my-td-item">Date</td><td>{{ obj.date }}</td></tr>
             <tr><td class="my-td-item">Category</td><td>{{ obj.category }}</td></tr>
-              <tr><td></td><td><td><p><a href="{% url 'feed:detail' obj.id %}">More</a></p></td></td></tr>
           </table>
+          <div class="row">
+              <div class="col-md-12">
+                  <button class="more-detail-btn btn btn-default">More Detail</button>
+              </div>
+          </div>
       </div>
       {% endfor %}
   </div>

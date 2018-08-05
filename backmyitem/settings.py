@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -25,8 +24,7 @@ SECRET_KEY = 'hu=x&fy*+)9z*^$n+2h=+g%4bx!gn%*xylu__+_p%(w+mwqq)3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','ec2-18-216-152-59.us-east-2.compute.amazonaws.com']
-
+ALLOWED_HOSTS = ['127.0.0.1', 'ec2-18-216-152-59.us-east-2.compute.amazonaws.com']
 
 # Application definition
 
@@ -70,21 +68,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backmyitem.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE':'django.db.backends.sqlite3',
-        'NAME':'myammaji',
-	'USER':'piro',
-        'PASSWORD':'N@sara0806196',
-        'HOST':'localhost',
-        'PORT':'5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'myammaji',
+        'USER': 'piro',
+        'PASSWORD': 'N@sara0806196',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -104,7 +100,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -118,12 +113,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, "..","static")
+STATIC_ROOT = os.path.join(BASE_DIR, "..", "static")
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "..","media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "..", "media")
 MEDIA_URL = '/media/'

@@ -12,7 +12,26 @@
                 <tr><td class="my-td-item">Date</td><td>{{ object.date }}</td></tr>
                 <tr><td class="my-td-item">Category</td><td>{{ object.category }}</td></tr>
                 <tr><td class="my-td-item">Description</td><td>{{ object.Description }}</td></tr>
+                <tr><td class="my-td-item">Image</td><td>{% if object.image%}<img class="img-responsive" src="{{ object.image.url }}" alt="backmyitem" width="300" height="200"> {% endif %}</td></tr>
+
           </table>
+           <div class="row">
+                    <div class="col-md-6">
+                        <a href="{% url 'feed:claim' object.id  %}">
+                          <button type="button" class="detail-btn btn btn-default btn-sm">
+                              <span class="glyphicon glyphicon-earphone"></span>Call
+                          </button>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                       <button type="button" class="detail-btn btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-share-alt"></span> Share
+                      </button>
+
+                    </div>
+
+
+                </div>
       </div>
   </div>
 

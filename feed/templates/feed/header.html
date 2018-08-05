@@ -62,6 +62,24 @@ input[type=submit]:hover {
     padding:10px;
     margin:10px;
 }
+.detail-btn{
+ width:80%;
+    padding:10px;
+    margin:10px;
+}
+
+
+footer{
+            background:#414141;
+            text-height: 24px;
+            color:white;
+            font-weight: 700;
+        }
+
+        .more-detail-btn{
+        width:100%;
+        border: none;
+        }
     </style>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -79,8 +97,8 @@ input[type=submit]:hover {
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Report</a></li>
+        <li class="active"><a href="{% url 'feed:index' %}">Home</a></li>
+        <li><a href="{% url 'feed:report' %}">Report</a></li>
         <li><a href="#">Notification</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
