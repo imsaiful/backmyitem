@@ -2,6 +2,7 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.utils import timezone
 from django.core.urlresolvers import reverse
+from django import forms
 
 
 class Report_item(models.Model):
@@ -10,7 +11,7 @@ class Report_item(models.Model):
     city = models.CharField(default="city option", max_length=20)
     date = models.DateTimeField(default=timezone.now)
     category = models.CharField(max_length=20)
-    Description = models.TextField(default="lost item desciption")
+    Description = models.TextField()
     publish=models.BooleanField(default=False)
     image=models.FileField(default="add Item image")
 
