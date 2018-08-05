@@ -93,7 +93,7 @@ footer{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">BackMyItem</a>
+      <a class="navbar-brand" href="{% url 'feed:index' %}">BackMyItem</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -102,9 +102,9 @@ footer{
         <li><a href="#">Notification</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <form class="navbar-form navbar-right" action="/action_page.php">
+        <form class="navbar-form navbar-right" action="">
           <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search lost item"/>
+              <input type="text" name='q' class="form-control" placeholder="Search lost item" value="{{ request.GET.q }}"/>
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>

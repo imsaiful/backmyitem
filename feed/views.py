@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Report_item,ClaimForm
+from .models import Report_item, ClaimForm
 from django.views import generic
 
 
@@ -8,7 +8,11 @@ class IndexView(generic.ListView):
     template_name = "feed/index.html"
 
     def get_queryset(self):
-        return Report_item.objects.all()
+        query_list = Report_item.objects.all()
+        query = self.request.GET.get('q')
+        if query:
+            query_list = query_list.filter(category__icontains=query)
+        return query_list
 
 
 class ReportCreate(generic.CreateView):
