@@ -5,9 +5,6 @@
   <div class="col-md-3">
   </div>
     <div class="col-md-8">
-
-
-
         <form class="form-herizontal" action="{% url 'feed:report' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
             {% include 'feed/form_template.html'%}
             <br>
@@ -17,11 +14,7 @@
 
                     </div>
                     <div class="col-md-3">
-                         {% if user.is_authenticated %}
-                            <button type="submit" class="report-btn btn btn-success">Submit</button>
-                         {% else %}
-                            <button type="submit" class="report-btn btn btn-success" disabled>Login to Submit report</button>
-                         {% endif %}
+                        <button type="submit" class="report-btn btn btn-success">Login</button>
                     </div>
                     <div class="col-md-3">
                         <button type="reset" class="report-btn btn btn-danger" value="Reset">Reset</button>
@@ -31,8 +24,10 @@
                     </div>
                 </div>
             </div>
-        </form>
 
+
+
+        </form>
     </div>
   <div class="col-md-1">
   </div>
