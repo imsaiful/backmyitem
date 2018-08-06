@@ -6,15 +6,22 @@
       <div class="col-md-6 col-md-push-3">
       {% for obj in object_list %}
       <div class="thumbnail" onclick="window.open('{% url 'feed:detail' obj.id %}','mywindow');" style="cursor: pointer;">
-          <table class="mytable table-responsive">
-            <tr><td class="my-td-item">Item Name</td><td>{{ obj.item_name }}</td></tr>
-            <tr><td class="my-td-item">Location</td><td>{{ obj.location }}</td></tr>
-            <tr><td class="my-td-item">Date</td><td>{{ obj.date }}</td></tr>
-            <tr><td class="my-td-item">Category</td><td>{{ obj.category }}</td></tr>
-          </table>
           <div class="row">
-              <div class="col-md-12">
-                  <button class="more-detail-btn btn btn-default">More Detail</button>
+              <div class="col-md-9">
+                  <table class="mytable table-responsive">
+                        <tr><td class="my-td-item">Item Name</td><td>{{ obj.item_name }}</td></tr>
+                        <tr><td class="my-td-item">Location</td><td>{{ obj.location }}</td></tr>
+                        <tr><td class="my-td-item">Date</td><td>{{ obj.date }}</td></tr>
+                        <tr><td class="my-td-item">Category</td><td>{{ obj.category }}</td></tr>
+                  </table>
+              </div>
+              <div class="col-md-3">
+                  <img class="img-responsive center" src="{{ obj.image.url }}" alt="backmyitem" width="80" height="100" style="margin: 0 auto;">
+              </div>
+          </div>
+          <div class="row">
+              <div class="more-detail-div col-md-12">
+                  <a class="">More Detail</a>
               </div>
           </div>
       </div>
