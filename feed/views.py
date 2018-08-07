@@ -1,8 +1,10 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Report_item, ClaimForm
 from django.views import generic
 from django.db.models import Q
+
+from django.utils import timezone
 
 
 class IndexView(generic.ListView):
@@ -29,7 +31,10 @@ class SearchCtaegoryView(generic.ListView):
 
 class ReportCreate(generic.CreateView):
     model = Report_item
-    fields = ['item_name', 'location', 'city', 'category', 'image', 'Description']
+    fields = ['item_name', 'location', 'city', 'image', 'Description']
+    help_texts = {
+        'item_name': 'Enter the Item Name you found',
+    }
 
 
 class ReportDetail(generic.DetailView):
@@ -41,4 +46,5 @@ class ClaimForm(generic.CreateView):
     model = ClaimForm
     fields = ['Your_name', 'Your_mobile_number', 'Detail_proof']
 
-# Create your views here.
+
+

@@ -11,12 +11,12 @@
                   <table class="mytable table-responsive">
                         <tr><td class="my-td-item">Item Name</td><td>{{ obj.item_name }}</td></tr>
                         <tr><td class="my-td-item">Location</td><td>{{ obj.location }}</td></tr>
-                        <tr><td class="my-td-item">Date</td><td>{{ obj.date }}</td></tr>
                         <tr><td class="my-td-item">Category</td><td>{{ obj.category }}</td></tr>
                   </table>
               </div>
               <div class="col-md-3">
                   <img class="img-responsive center" src="{{ obj.image.url }}" alt="backmyitem" width="80" height="100" style="margin: 0 auto;">
+                  <br><b><p style="font-size: 10px;text-align:center;">Posted Date</b><br>{{ obj.date }}</p>
               </div>
           </div>
           <div class="row">

@@ -6,14 +6,14 @@ from django import forms
 
 
 class Report_item(models.Model):
-    item_name = models.CharField(max_length=20)
-    location = models.CharField(max_length=60)
-    city = models.CharField(default="city option", max_length=20)
+    item_name = models.CharField(max_length=50, help_text='*Enter the item name you found e.g. Marksheet,key,wallet')
+    location = models.CharField(max_length=60, help_text='*Enter the address/street where you find this item')
+    city = models.CharField(default="city option", max_length=20, help_text='*Enter the city name')
     date = models.DateTimeField(default=timezone.now)
     category = models.CharField(max_length=20)
-    Description = models.TextField()
-    publish=models.BooleanField(default=False)
-    image=models.FileField(default="add Item image")
+    Description = models.TextField(help_text='*Enter full description about item')
+    publish = models.BooleanField(default=False)
+    image = models.FileField(default="add Item image",help_text='*Please uplocad a item image to identify by the owner')
 
     def __str__(self):
         return self.item_name + " " + self.location
@@ -32,7 +32,3 @@ class ClaimForm(models.Model):
 
     def __str__(self):
         return self.Your_name + " " + self.Detail_of_proof
-
-
-
-# Create your models here.
