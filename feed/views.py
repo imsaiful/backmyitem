@@ -7,9 +7,11 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.views.generic import View
-from .forms import SignUpForm
+from .forms import SignUpForm,LoginForm
 from django.contrib.auth import logout
 
+from django.contrib.auth import get_user_model
+from django.contrib.auth.backends import ModelBackend
 
 class IndexView(generic.ListView):
     template_name = "feed/index.html"
@@ -78,9 +80,35 @@ class SignUpForm(generic.CreateView):
         return render(request, self.template_name, {'form': form})
 
 
+class LoginForm(generic.CreateView):
+    print("login")
+    form_class = LoginForm
+    template_name = "feed/SignUp.html"
+
+    def get(self, request):
+        form = self.form_class(None)
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            UserModel = get_user_model()
+            email = request.POST['email']
+            password = request.POST['password']
+            username = UserModel.objects.get(email=email)
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('feed:report')
+        else:
+            print(form.errors)
+
 
 
 def logout_view(request):
     logout(request)
     query_list = Report_item.objects.all()
     return render(request,"feed/index.html", {'object_list': query_list})
+
+

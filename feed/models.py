@@ -19,14 +19,11 @@ class Report_item(models.Model):
     def __str__(self):
         return self.item_name+"      "+str(self.publish)
 
-
-
     def get_absolute_url(self):
         return reverse('feed:detail', kwargs={'pk': self.pk})
 
     class Meta:
         ordering = ["-date"]
-
 
 class ClaimForm(models.Model):
     Your_name = models.CharField(max_length=50)
