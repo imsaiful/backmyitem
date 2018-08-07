@@ -6,7 +6,7 @@ from django import forms
 
 
 class Report_item(models.Model):
-    item_name = models.CharField(max_length=50, help_text='*Enter the item name you found e.g. Marksheet,key,wallet')
+    item_name = models.CharField(max_length=50,help_text='*Enter the item name you found e.g. Marksheet,key,wallet')
     location = models.CharField(max_length=60, help_text='*Enter the address/street where you find this item')
     city = models.CharField(default="city option", max_length=20, help_text='*Enter the city name')
     date = models.DateTimeField(default=timezone.now)

@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.views.generic import View
 from .forms import SignUpForm
+from django.contrib.auth import logout
 
 
 class IndexView(generic.ListView):
@@ -35,6 +36,7 @@ class SearchCtaegoryView(generic.ListView):
 class ReportCreate(generic.CreateView):
     model = Report_item
     fields = ['item_name', 'location', 'city', 'image', 'Description']
+
 
 
 class ReportDetail(generic.DetailView):
@@ -74,3 +76,11 @@ class SignUpForm(generic.CreateView):
             print(form.errors)
 
         return render(request, self.template_name, {'form': form})
+
+
+
+
+def logout_view(request):
+    logout(request)
+    query_list = Report_item.objects.all()
+    return render(request,"feed/index.html", {'object_list': query_list})
