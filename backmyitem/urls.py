@@ -18,10 +18,13 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from . import settings
 from django.contrib.auth import views as auth_views
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('feed.urls')),
     url(r'^login/$', auth_views.login, {'template_name': 'feed/login_user.html'})
+
 ]
 
 

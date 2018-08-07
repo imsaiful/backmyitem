@@ -10,13 +10,16 @@ class Report_item(models.Model):
     location = models.CharField(max_length=60, help_text='*Enter the address/street where you find this item')
     city = models.CharField(default="city option", max_length=20, help_text='*Enter the city name')
     date = models.DateTimeField(default=timezone.now)
-    category = models.CharField(max_length=20)
     Description = models.TextField(help_text='*Enter full description about item')
+    category= models.CharField(max_length=50)
     publish = models.BooleanField(default=False)
+
     image = models.FileField(default="add Item image",help_text='*Please uplocad a item image to identify by the owner')
 
     def __str__(self):
-        return self.item_name + " " + self.location
+        return self.item_name+"      "+str(self.publish)
+
+
 
     def get_absolute_url(self):
         return reverse('feed:detail', kwargs={'pk': self.pk})

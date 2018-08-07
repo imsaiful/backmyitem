@@ -3,8 +3,11 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Report_item, ClaimForm
 from django.views import generic
 from django.db.models import Q
-
+from django.contrib.auth import login, authenticate
+from django.shortcuts import render, redirect
 from django.utils import timezone
+from django.views.generic import View
+from .forms import SignUpForm
 
 
 class IndexView(generic.ListView):
@@ -32,9 +35,6 @@ class SearchCtaegoryView(generic.ListView):
 class ReportCreate(generic.CreateView):
     model = Report_item
     fields = ['item_name', 'location', 'city', 'image', 'Description']
-    help_texts = {
-        'item_name': 'Enter the Item Name you found',
-    }
 
 
 class ReportDetail(generic.DetailView):
@@ -47,4 +47,30 @@ class ClaimForm(generic.CreateView):
     fields = ['Your_name', 'Your_mobile_number', 'Detail_proof']
 
 
+class SignUpForm(generic.CreateView):
+    form_class = SignUpForm
+    template_name = "feed/SignUp.html"
 
+    def get(self, request):
+        form = self.form_class(None)
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            print("form valid")
+            user = form.save(commit=False)
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user.set_password(password)
+            form.save()
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('feed:index')
+        else:
+            print(form.errors)
+
+        return render(request, self.template_name, {'form': form})

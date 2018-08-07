@@ -11,7 +11,7 @@
                   <table class="mytable table-responsive">
                         <tr><td class="my-td-item">Item Name</td><td>{{ obj.item_name }}</td></tr>
                         <tr><td class="my-td-item">Location</td><td>{{ obj.location }}</td></tr>
-                        <tr><td class="my-td-item">Category</td><td>{{ obj.category }}</td></tr>
+                        <tr><td class="my-td-item">City</td><td>{{ obj.city }}</td></td>
                   </table>
               </div>
               <div class="col-md-3">
@@ -46,6 +46,12 @@
 
 
   <div class="col-md-3">
+      <form class="navbar-form navbar-right" action="">
+          <div class="form-group">
+              <input type="text" name='q' class="form-control" placeholder="Search lost item" value="{{ request.GET.q }}"/>
+          </div>
+          <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
+        </form>
   </div>
   </div>
 </div>
