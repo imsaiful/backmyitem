@@ -2,49 +2,53 @@
 
 
 {% block content %}
+
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
 
     </div>
-    <div class="col-md-6">
-        {% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
-
-{% if next %}
-    {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-    {% else %}
-    <p>Please login to see this page.</p>
-    {% endif %}
-{% endif %}
-
+    <div class="col-md-4">
+        <div class="thumbnail">
+           <div class="logo">
+ <p>BackMyItem</p>
+</div>
         <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
-        <table>
-        <tr>
-            <td>{{ form.username.label_tag }}</td>
-            <td>{{ form.username }}</td>
-        </tr>
-        <tr>
-            <td>{{ form.password.label_tag }}</td>
-            <td>{{ form.password }}</td>
-        </tr>
-        </table>
+              {% if form.errors %}
+                <p>{{ form.errors }}</p>
+              {% endif %}
+        {% include 'registration/form_login_template.html'%}
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-5">
+                            <button type="submit" class="login-btn btn btn-success">Login</button>
+                    </div>
 
-        <input type="submit" value="login">
-        <input type="hidden" name="next" value="{{ next }}">
+
+                </div>
+            <br><br>
+            <div class="row"><div class="col-md-12"><a href="#" class="pull-right">>>Reset Password</a></div></div>
+
         </form>
+            <br><br>
+        </div>
+        <div class="thumbnail">
+                <div style="text-align:center;">
+                  <p>Don't have an account?<a href="{% url 'feed:signup' %}">&nbsp;&nbsp;&nbsp;Sign up</a></p>
+       </div>
+
+        </div>
 
 
 
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
 
     </div>
 
 </div>
+<br>
+<br><br><br><br><br>
 
 {% endblock %}
 

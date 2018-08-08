@@ -37,7 +37,7 @@ class SearchCtaegoryView(generic.ListView):
 
 class ReportCreate(generic.CreateView):
     model = Report_item
-    fields = ['item_name', 'location', 'city', 'image', 'Description']
+    fields = ['title','item_type', 'location', 'city', 'image', 'Description']
 
 
 
