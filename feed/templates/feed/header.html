@@ -126,13 +126,11 @@ footer{
 
         {% if not user.is_authenticated %}
             <li><a href="{% url 'feed:signup' %}"><span class="glyphicon glyphicon-user"></span>&nbsp;Sign Up</a></li>
-        {% endif %}
-
-        {% if user.is_authenticated %}
-
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>&nbsp;{{request.user.username}}</a></li>
+            <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
         {% else %}
-          <li><a href=""><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>&nbsp;{{request.user.username}}</a></li>
+          <li><a href="{% url 'feed:logout' %}"><span class="glyphicon glyphicon-log-out"></span>&nbsp;logout</a></li>
+
         {% endif %}
 
 
