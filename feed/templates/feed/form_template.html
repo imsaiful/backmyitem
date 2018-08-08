@@ -1,12 +1,10 @@
 {% for field in form %}
-<div class="form-group">
-    <div class="col-sm-offset- col-sm-10">
-        <span class="text-danger small">{{ field.error }}</span>
+<div class="row">
+    <div class="signupdiv col-md-5">
+        {{field.label_tag}}
     </div>
-        <label class="control-label col-sm-3">{{field.label_tag}}</label>
-    <div class="col-sm-8">{{ field }}<br>
-        {% if field.help_text %}<small style="font-size: 10px;color:#757575;">{{ field.help_text }}</small>{% endif %}
+    <div class="signupfield col-md-7">
+        {{ field }}
     </div>
-    <br>
 </div>
 {% endfor %}

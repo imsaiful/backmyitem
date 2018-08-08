@@ -2,12 +2,15 @@
 {% block content %}
 <div class="container">
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-4">
   </div>
-    <div class="col-md-8">
-
-
-
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <div class="thumbnail-center">
+            <font size="4">
+            <p>Congrates! You are going to become someone happiness.</p>
+            </font>
+        </div>
         <form class="form-herizontal" action="{% url 'feed:report' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {% include 'feed/form_template.html'%}
@@ -16,37 +19,31 @@
                          <div class="col-md-3">
                         </div>
                         <div class="col-md-9">
-                                <p style="color:red;">*Please login to submit report</p>
+                            <p style="color:red;">*Please <a href="{% url 'login' %}">login</a> first to submit report</p>
                         </div>
                     </div>
                 {% endif %}
-
-            <div class="form-group">
-
-                <div class="row">
-
-                    <div class="col-md-3">
+                 {% if user.is_authenticated %}
+                     <div class="row">
+                        <div class="col-md-5"></div>
+                        <div class="col-md-7">
+                                <button type="submit" class="login-btn btn btn-success">Submit</button>
                         </div>
+                     </div>
+                 {% else %}
+                     <div class="row">
+                        <div class="col-md-5"></div>
+                        <div class="col-md-7">
+                                <button type="submit" class="login-btn btn btn-success" disabled>Submit</button>
+                        </div>
+                 {% endif %}
+                     </div>
 
-                    <div class="col-md-3">
-                         {% if user.is_authenticated %}
-                            <button type="submit" class="report-btn btn btn-success">Submit</button>
-                         {% else %}
-                            <button type="submit" class="report-btn btn btn-success" disabled>Submit</button>
-                         {% endif %}
-                    </div>
-                    <div class="col-md-3">
-                        <button type="reset" class="report-btn btn btn-danger" value="Reset">Reset</button>
-                    </div>
-                    <div class="col-md-3">
-
-                    </div>
-                </div>
-            </div>
+            <br>
         </form>
-
+        </div>
     </div>
-  <div class="col-md-1">
+  <div class="col-md-4">
   </div>
   </div>
 </div>
