@@ -3,9 +3,10 @@ from django.db import models
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 from django import forms
-
+from django.conf import settings
 
 class Report_item(models.Model):
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL,default=1)
     title = models.CharField(max_length=255,help_text='*Title for the post e.g. item identity')
     item_type = models.CharField(default="",max_length=100,help_text='*Enter the item name you found e.g. Marksheet,key,wallet')
     location = models.CharField(max_length=60, help_text='*Enter the address/street where you find this item')
@@ -16,8 +17,9 @@ class Report_item(models.Model):
 
     image = models.FileField(default="add Item image",help_text='*Please uplocad a item image to identify by the owner')
 
+
     def __str__(self):
-        return self.item_name+"      "+str(self.publish)
+        return self.title+"      "+str(self.publish)
 
     def get_absolute_url(self):
         return reverse('feed:detail', kwargs={'pk': self.pk})

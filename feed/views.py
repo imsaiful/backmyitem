@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
+from django.views.generic.edit import FormMixin
+
 from .models import Report_item, ClaimForm
 from django.views import generic
 from django.db.models import Q
@@ -38,6 +40,12 @@ class SearchCtaegoryView(generic.ListView):
 class ReportCreate(generic.CreateView):
     model = Report_item
     fields = ['title','item_type', 'location', 'city', 'image', 'Description']
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.owner = self.request.user
+        self.object.save()
+        return FormMixin.form_valid(self, form)
 
 
 
