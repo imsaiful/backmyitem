@@ -106,10 +106,10 @@ input[type=submit]:hover {
 .reset{
 text-align:center;
 }
-.detail-btn{
+.request-btn{
  width:80%;
-    padding:10px;
-    margin:10px;
+  padding:5%;
+  margin:5%;
 }
 
 
@@ -146,7 +146,9 @@ footer{
       <ul class="nav navbar-nav">
         <li class="active"><a href="{% url 'feed:index' %}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
         <li><a href="{% url 'feed:report' %}"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Report</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-bullhorn"></span>&nbsp;&nbsp;Notification</a></li>
+             {% if user.is_authenticated %}
+        <li><a href="{% url 'notifications:mynotification' %}"><span class="glyphicon glyphicon-bullhorn"></span>&nbsp;&nbsp;Notification</a></li>
+            {% endif %}
       </ul>
       <ul class="nav navbar-nav navbar-right">
 

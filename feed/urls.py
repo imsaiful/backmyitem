@@ -13,4 +13,6 @@ urlpatterns = [
     url(r'^login$', views.LoginForm.as_view(), name='login'),
     url(r'^logout$', views.logout_view, name='logout'),
 
+
+
 ]

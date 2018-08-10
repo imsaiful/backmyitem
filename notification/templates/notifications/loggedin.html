@@ -1,0 +1,10 @@
+{% extends 'feed/base.html' %}
+{% block content %}
+<h2>{{ full_name }} &nbsp;Welcome</h2>
+{% if notification %}
+<h3>Notification</h3>
+{% endif %}
+{% for n in notification %}
+<p><a href="{% url 'notifications:show_notification' n.id %}">{{n.title}}</a></p>
+{% endfor %}
+{% endblock %}

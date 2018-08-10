@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.edit import FormMixin
 
@@ -118,5 +118,6 @@ def logout_view(request):
     logout(request)
     query_list = Report_item.objects.all()
     return render(request,"feed/index.html", {'object_list': query_list})
+
 
 

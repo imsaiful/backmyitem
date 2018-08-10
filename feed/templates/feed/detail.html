@@ -9,28 +9,38 @@
           <table class="mytable table-responsive">
                 <tr><td class="my-td-item">Title</td><td>{{ object.title }}</td></tr>
                 <tr><td class="my-td-item">Location</td><td>{{ object.location }}</td></tr>
+                <tr><td class="my-td-item">City</td><td>{{ object.city }}</td></tr>
                 <tr><td class="my-td-item">Date</td><td>{{ object.date }}</td></tr>
                 <tr><td class="my-td-item">Description</td><td>{{ object.Description }}</td></tr>
                 <tr><td class="my-td-item">Image</td><td>{% if object.image%}<img class="img-responsive" src="{{ object.image.url }}" alt="backmyitem" width="300" height="200"> {% endif %}</td></tr>
 
           </table>
            <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-4">
                         <a href="{% url 'feed:claim' object.id  %}">
-                          <button type="button" class="detail-btn btn btn-default btn-sm">
-                              <span class="glyphicon glyphicon-earphone"></span>Call
+                          <button type="button" class="request-btn btn btn-default btn-sm">
+                              <span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;Request to return
                           </button>
                         </a>
                     </div>
-                    <div class="col-md-6">
-                       <button type="button" class="detail-btn btn btn-default btn-sm">
+               <div class="col-md-1">
+                    </div><div class="col-md-1">
+                    </div>
+                    <div class="col-md-4">
+                       <button type="button" class="request-btn btn btn-default btn-sm">
                         <span class="glyphicon glyphicon-share-alt"></span> Share
                       </button>
 
                     </div>
+               <div class="col-md-1">
+                    </div>
 
-
-                </div>
+           </div>
+          <div class="thumbnail-center">
+              <font size="4"><p>Click on <b>Request to return</b> Button if this is your item</p></font>
+          </div>
       </div>
   </div>
 

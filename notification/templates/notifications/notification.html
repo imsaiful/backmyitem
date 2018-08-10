@@ -1,0 +1,6 @@
+{% extends 'feed/base.html' %}
+{% block content %}
+<h2>{{ notification.title }}</h2>
+<h2>{{ notification.message }}</h2>
+<p><a href="{% url 'notifications:read_notification' notification.id  %}">Marked Notification</a></p>
+{% endblock %}
