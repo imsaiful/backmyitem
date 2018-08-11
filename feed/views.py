@@ -8,12 +8,13 @@ from django.db.models import Q
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from django.views.generic import View
+from django.views.generic import View,UpdateView,DeleteView
 from .forms import SignUpForm, LoginForm
 from django.contrib.auth import logout
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
+from django.core.urlresolvers import reverse_lazy
 
 
 class IndexView(generic.ListView):
@@ -122,10 +123,16 @@ def logout_view(request):
 def Profile(request, username):
     print(username)
     qs = Report_item.objects.filter(owner__username=username)
-
-    name = request.user.get_full_name()
     context = {
         "object_list": qs,
-        "name": name,
     }
     return render(request, "feed/profile.html", context)
+
+
+class ReportUpdate(UpdateView):
+    model = Report_item
+    fields = ['title', 'item_type', 'location', 'city', 'image', 'Description']
+
+class ReportDelete(DeleteView):
+    model = Report_item
+    success_url = reverse_lazy('feed:index')

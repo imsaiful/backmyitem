@@ -13,6 +13,8 @@ urlpatterns = [
     url(r'^login$', views.LoginForm.as_view(), name='login'),
     url(r'^logout$', views.logout_view, name='logout'),
     url(r'^u/(?P<username>\w+)/$', views.Profile, name='profile'),
+    url(r'^update/(?P<pk>[0-9]+)/$', views.ReportUpdate.as_view(), name='report-update'),
+    url(r'^delete/(?P<pk>[0-9]+)/$', views.ReportDelete.as_view(), name='report-delete'),
 
 
 

@@ -11,7 +11,7 @@
             <p>Congrates! You are going to become someone happiness.</p>
             </font>
         </div>
-        <form class="form-herizontal" action="{% url 'feed:report' %}" method="POST" enctype="multipart/form-data">
+        <form class="form-herizontal" action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {% include 'feed/form_template.html'%}
             {% if not user.is_authenticated %}
