@@ -1,4 +1,3 @@
-
 {% extends "feed/base.html" %}
 {% block content %}
 <div class="container">
@@ -20,18 +19,19 @@
                   <br><b><p style="font-size: 10px;text-align:center;">Posted Date</b><br>{{ obj.date }}</p>
               </div>
           </div>
-          <div class="row">
-              <div class="more-detail-div col-md-9">
-                  <a class="">More Detail</a>
-              </div>
-               <div class="col-md-3">
-                  <a href="{% url 'feed:report-update' obj.id %}">Update</a>
-              </div>
-               <div class="col-md-3">
-                  <a href="{% url 'feed:report-delete' obj.id %}">Delete</a>
-              </div>
+          <table class="table table-responsive">
+              <tr><td><a href="{% url 'feed:detail' obj.id %}"><button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-check"></span> Read More
+        </button></a></td>
+              <td><a href="{% url 'feed:report-update' obj.id %}"><button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-edit"></span> Edit
+        </button></a></td>
+              <td><a href="{% url 'feed:report-delete' obj.id %}"><button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-trash"></span> Trash
+              </button></a></td></tr>
 
-          </div>
+          </table>
+
       </div>
       {% endfor %}
   </div>
