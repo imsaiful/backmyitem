@@ -4,7 +4,6 @@ from django.utils import timezone
 from django.core.urlresolvers import reverse
 from django import forms
 from django.conf import settings
-from notification.models import Notification
 
 
 class Report_item(models.Model):

@@ -1,0 +1,59 @@
+
+{% extends "feed/base.html" %}
+{% block content %}
+<div class="container">
+<div class="row">
+      <div class="col-md-6 col-md-push-3">
+      {% for obj in object_list %}
+      <div class="thumbnail" onclick="window.open('{% url 'feed:detail' obj.id %}','mywindow');" style="cursor: pointer;">
+          <div class="row">
+              <div class="col-md-9">
+                  <table class="mytable table-responsive">
+                        <tr><td class="my-td-item">Title</td><td>{{ obj.title }}</td></tr>
+                        <tr><td class="my-td-item">Item Type</td><td>{{ obj.item_type }}</td></tr>
+                        <tr><td class="my-td-item">Location</td><td>{{ obj.location }}</td></tr>
+                      <tr><td class="my-td-item">City</td><td>{{ obj.city }}</td></td></tr>
+                  </table>
+              </div>
+              <div class="col-md-3">
+                  <img class="img-responsive center" src="{{ obj.image.url }}" alt="backmyitem" width="80" height="100" style="margin: 0 auto;">
+                  <br><b><p style="font-size: 10px;text-align:center;">Posted Date</b><br>{{ obj.date }}</p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="more-detail-div col-md-12">
+                  <a class="">More Detail</a>
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+
+  <div class="col-md-3 col-md-pull-6">
+      <p>Search by Category</p>
+      <hr>
+      <ul>
+          <li><a href="/category/marksheet">Marksheet</a></li>
+          <li><a href="/category/passport">Passport</a></li>
+          <li><a href="/category/card">Card</a></li>
+          <li><a href="/category/document">Document</a></li>
+          <li><a href="/category/mobile">Mobile</a></li>
+          <li><a href="/category/laptop">Laptop</a></li>
+          <li><a href="/category/gadget">Electronic Item</a></li>
+          <li><a href="/category/purse">Wallet and Purse</a></li>
+          <li><a href="/category/bag">Bag</a></li>
+      </ul>
+  </div>
+
+
+  <div class="col-md-3">
+      <form class="navbar-form navbar-right" action="">
+          <div class="form-group">
+              <input type="text" name='q' class="form-control" placeholder="Search lost item" value="{{ request.GET.q }}"/>
+          </div>
+          <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
+        </form>
+  </div>
+  </div>
+</div>
+ {% endblock %}

@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^signup$', views.SignUpForm.as_view(), name='signup'),
     url(r'^login$', views.LoginForm.as_view(), name='login'),
     url(r'^logout$', views.logout_view, name='logout'),
+    url(r'^u/(?P<username>\w+)/$', views.Profile, name='profile'),
 
 
 

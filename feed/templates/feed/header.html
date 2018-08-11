@@ -5,6 +5,44 @@
     <title>Back My Item</title>
     <meta charset="utf-8">
     <style>
+    .dropbtn {
+    background-color: #ffffff;
+    color: black;
+    border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
     .signup-thumbnail{
         padding-right:5%;
     }
@@ -62,7 +100,7 @@
         .my-td-item{
           color:red;
         }
-input[type=text],input[type=email] , input[type=password], select, textarea {
+input[type=text],input[type=email],input[type=number] , input[type=password], select, textarea {
   width: 100%;
   padding: 1px;
   border: 1px solid #ccc;
@@ -146,25 +184,38 @@ footer{
       <ul class="nav navbar-nav">
         <li class="active"><a href="{% url 'feed:index' %}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
         <li><a href="{% url 'feed:report' %}"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Report</a></li>
-             {% if user.is_authenticated %}
-        <li><a href="{% url 'notifications:mynotification' %}"><span class="glyphicon glyphicon-bullhorn"></span>&nbsp;&nbsp;Notification</a></li>
-            {% endif %}
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'notifications:mynotification' %}"><span class="glyphicon glyphicon-bullhorn"></span>&nbsp;&nbsp;Notification</a></li>
+        {% endif %}
       </ul>
       <ul class="nav navbar-nav navbar-right">
-
-        {% if not user.is_authenticated %}
+      {% if not user.is_authenticated %}
             <li><a href="{% url 'feed:signup' %}"><span class="glyphicon glyphicon-user"></span>&nbsp;Sign Up</a></li>
             <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
         {% else %}
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>&nbsp;{{request.user.username}}</a></li>
+
+          <li><a href="{% url 'feed:profile' user.username %}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;{{ user.username }}</a></li>
           <li><a href="{% url 'feed:logout' %}"><span class="glyphicon glyphicon-log-out"></span>&nbsp;logout</a></li>
+
+      </ul>
+
+
+
+
+
+
+
+
+          </li>
 
         {% endif %}
 
 
       </ul>
 
+
     </div>
+
   </div>
         </div>
 </nav>

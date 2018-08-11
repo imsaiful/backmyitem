@@ -9,11 +9,12 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.views.generic import View
-from .forms import SignUpForm,LoginForm
+from .forms import SignUpForm, LoginForm
 from django.contrib.auth import logout
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
+
 
 class IndexView(generic.ListView):
     template_name = "feed/index.html"
@@ -39,14 +40,13 @@ class SearchCtaegoryView(generic.ListView):
 
 class ReportCreate(generic.CreateView):
     model = Report_item
-    fields = ['title','item_type', 'location', 'city', 'image', 'Description']
+    fields = ['title', 'item_type', 'location', 'city', 'image', 'Description']
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.owner = self.request.user
         self.object.save()
         return FormMixin.form_valid(self, form)
-
 
 
 class ReportDetail(generic.DetailView):
@@ -113,11 +113,19 @@ class LoginForm(generic.CreateView):
             print(form.errors)
 
 
-
 def logout_view(request):
     logout(request)
     query_list = Report_item.objects.all()
-    return render(request,"feed/index.html", {'object_list': query_list})
+    return render(request, "feed/index.html", {'object_list': query_list})
 
 
+def Profile(request, username):
+    print(username)
+    qs = Report_item.objects.filter(owner__username=username)
 
+    name = request.user.get_full_name()
+    context = {
+        "object_list": qs,
+        "name": name,
+    }
+    return render(request, "feed/profile.html", context)

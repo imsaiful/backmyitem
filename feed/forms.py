@@ -3,8 +3,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Report_item
 
-
-
 class SignUpForm(UserCreationForm):
     class Meta:
         model = User
