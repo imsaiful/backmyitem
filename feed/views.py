@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.edit import FormMixin
 
-from .models import Report_item, ClaimForm
+from .models import Report_item, ClaimForm, UserNotification
 from django.views import generic
 from django.db.models import Q
 from django.contrib.auth import login, authenticate
@@ -136,3 +136,41 @@ class ReportUpdate(UpdateView):
 class ReportDelete(DeleteView):
     model = Report_item
     success_url = reverse_lazy('feed:index')
+
+
+class RequestItem(generic.CreateView):
+    model = UserNotification
+    fields = ['Name', 'Mobile_No', 'Proof']
+
+    def form_valid(self, form):
+        print(self.kwargs)
+
+        self.object = form.save(commit=False)
+        qs=Report_item.objects.filter(id=self.kwargs.get("pk"))
+        self.object.user = qs[0].owner
+        self.object.save()
+        return HttpResponse("<h1>Hello Friends </h1>")
+
+
+def show_notification(request, notification_id):
+    n = UserNotification.objects.get(id=notification_id)
+    print(n)
+    context = {
+        "notification": n,
+    }
+    return render(request, "notification/notification.html", context)
+
+
+def read_notification(request, notification_id):
+    n = UserNotification.objects.get(id=notification_id)
+    n.viewed = True
+    n.save()
+    return HttpResponse("<h1>Hello Friends chai pee lo</h1>")
+
+
+def mynotification(request):
+
+    n = UserNotification.objects.filter(user=request.user, viewed=False)
+    print(type(n))
+    return render_to_response("notification/loggedin.html",
+                              {'full_name': request.user.first_name, 'notification': n, })

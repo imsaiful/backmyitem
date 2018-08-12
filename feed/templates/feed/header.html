@@ -8,8 +8,6 @@
     .profile-btn-div{
     margin-left:5%;
     margin-top:5%;
-
-
     }
     .signup-thumbnail{
         padding-right:5%;
@@ -30,9 +28,7 @@
      font-weight: bold;
      font-style: italic;
       font-size: 40px;
-
     }
-
       .logo{
         width:15%;
         height:80%;
@@ -55,6 +51,7 @@
         body {
                 background-color: #F8F8F8!important;
                 margin-top: 65px;
+                padding-top: 65px; 
             }
             .navbar-brand{
               color:red!important;
@@ -139,7 +136,7 @@ footer{
 </head>
 <body>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -156,7 +153,7 @@ footer{
         <li class="active"><a href="{% url 'feed:index' %}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
         <li><a href="{% url 'feed:report' %}"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Report</a></li>
         {% if user.is_authenticated %}
-            <li><a href="{% url 'notifications:mynotification' %}"><span class="glyphicon glyphicon-bullhorn"></span>&nbsp;&nbsp;Notification</a></li>
+            <li><a href="{% url 'feed:mynotification' %}"><span class="glyphicon glyphicon-bullhorn"></span>&nbsp;&nbsp;Notification</a></li>
         {% endif %}
       </ul>
       <ul class="nav navbar-nav navbar-right">

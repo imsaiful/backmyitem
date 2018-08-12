@@ -17,5 +17,13 @@ urlpatterns = [
     url(r'^delete/(?P<pk>[0-9]+)/$', views.ReportDelete.as_view(), name='report-delete'),
 
 
+    # notification
+
+    url(r'^notification/$', views.mynotification, name='mynotification'),
+    url(r'^notification/show/(?P<notification_id>[0-9]+)/$', views.show_notification, name='show_notification'),
+    url(r'^notification/read/(?P<notification_id>\d+)/$', views.read_notification, name='read_notification'),
+    url(r'^notification/request/(?P<pk>[0-9]+)/$', views.RequestItem.as_view(), name='request'),
+
+
 
 ]

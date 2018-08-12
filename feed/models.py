@@ -4,10 +4,16 @@ from django.utils import timezone
 from django.core.urlresolvers import reverse
 from django import forms
 from django.conf import settings
+from django.core.validators import MaxValueValidator
+from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 
 
 class Report_item(models.Model):
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL)
     title = models.CharField(max_length=255, help_text='*Title for the post e.g. item identity')
     item_type = models.CharField(default="", max_length=100,
                                  help_text='*Enter the item name you found e.g. Marksheet,key,wallet')
@@ -37,3 +43,21 @@ class ClaimForm(models.Model):
 
     def __str__(self):
         return self.Your_name + " " + self.Detail_of_proof
+
+
+
+
+class UserNotification(models.Model):
+    Name = models.CharField(max_length=250)
+    Mobile_No = models.IntegerField(validators=[MaxValueValidator(9999999999)])
+    Proof = models.TextField()
+    viewed = models.BooleanField(default=False)
+    user = models.ForeignKey(User)
+
+    def __str__(self):
+        return self.Name
+
+
+
+
+# Create your models here.

@@ -5,6 +5,6 @@
 <h3>Notification</h3>
 {% endif %}
 {% for n in notification %}
-<p><a href="{% url 'notifications:show_notification' n.id %}">{{n.Name}} requested for the item</a></p>
+<p><a href="{% url 'feed:show_notification' n.id %}">{{n.Name}} requested for the item</a></p>
 {% endfor %}
 {% endblock %}

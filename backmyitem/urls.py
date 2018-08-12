@@ -23,7 +23,6 @@ from django.contrib.auth.views import LoginView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('feed.urls')),
-    url(r'^bmi/', include('notification.urls')),
     url(r'^login/$', LoginView.as_view(), name="login")
 
 ]

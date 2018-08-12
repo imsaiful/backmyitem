@@ -1,7 +1,8 @@
+
 {% extends 'feed/base.html' %}
 {% block content %}
 <h2>{{ notification.Name }}</h2>
 <h2>{{ notification.Mobile_No }}</h2>
 <h2>{{ notification.Proof }}</h2>
-<p><a href="{% url 'notifications:read_notification' notification.id  %}">Marked Notification</a></p>
+<p><a href="{% url 'feed:read_notification' notification.id  %}">Marked Notification</a></p>
 {% endblock %}
