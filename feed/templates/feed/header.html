@@ -134,7 +134,7 @@ footer{
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-<body>
+<body onload="happycode()">
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -152,11 +152,41 @@ footer{
       <ul class="nav navbar-nav">
         <li class="active"><a href="{% url 'feed:index' %}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
         <li><a href="{% url 'feed:report' %}"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Report</a></li>
-        {% if user.is_authenticated %}
-            <li><a href="{% url 'feed:mynotification' %}"><span class="glyphicon glyphicon-bullhorn"></span>&nbsp;&nbsp;Notification</a></li>
+      </ul>
+          {% if user.is_authenticated %}
+        <ul class="nav navbar-nav navbar-left">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-bullhorn">&nbsp;Notification (<b>{{ count }}</b>)</a>
+
+            <ul class="dropdown-menu notify-drop">
+            <div class="notify-drop-title">
+            	<div class="row">
+
+            		<div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href="" class="rIcon allRead" data-tooltip="tooltip" data-placement="bottom" title="tümü okundu."><i class="fa fa-dot-circle-o"></i></a></div>
+            	</div>
+            </div>
+            <!-- end notify title -->
+            <!-- notify content -->
+            <div class="drop-content">
+            {% if notification %}
+                {% for n in notification %}
+                    <p><a href="{% url 'feed:show_notification' n.id %}">{{n.Name}} requested for the item</a></p>
+                    <hr>
+                {% endfor %}
+            {% else %}
+             <div class="thumbnail-center">
+                 <font size="4">
+                     <p>You do not have any notification</p>
+                 </font>
+             </div>
+            {% endif %}
+            </div>
+          </ul>
+        </li>
+      </ul>
         {% endif %}
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+              <ul class="nav navbar-nav navbar-right">
       {% if not user.is_authenticated %}
             <li><a href="{% url 'feed:signup' %}"><span class="glyphicon glyphicon-user"></span>&nbsp;Sign Up</a></li>
             <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>

@@ -8,7 +8,7 @@ from django.db.models import Q
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from django.views.generic import View,UpdateView,DeleteView
+from django.views.generic import View, UpdateView, DeleteView
 from .forms import SignUpForm, LoginForm
 from django.contrib.auth import logout
 
@@ -17,15 +17,30 @@ from django.contrib.auth.backends import ModelBackend
 from django.core.urlresolvers import reverse_lazy
 
 
-class IndexView(generic.ListView):
-    template_name = "feed/index.html"
-
-    def get_queryset(self):
+def IndexView(request):
+    if request.user.is_anonymous:
+        print("Hello")
         query_list = Report_item.objects.all()
-        query = self.request.GET.get('q')
+        query = request.GET.get('q')
         if query:
             query_list = query_list.filter(category__icontains=query)
-        return query_list
+        context = {
+            "object_list": query_list,
+        }
+        return render(request, "feed/index.html", context)
+    else:
+        query_list = Report_item.objects.all()
+        query = request.GET.get('q')
+        if query:
+            query_list = query_list.filter(category__icontains=query)
+
+        n = UserNotification.objects.filter(user=request.user, viewed=False)
+        context = {
+            "object_list": query_list,
+            'notification': n,
+            'count': n.count(),
+        }
+        return render(request, "feed/index.html", context)
 
 
 class SearchCtaegoryView(generic.ListView):
@@ -133,6 +148,7 @@ class ReportUpdate(UpdateView):
     model = Report_item
     fields = ['title', 'item_type', 'location', 'city', 'image', 'Description']
 
+
 class ReportDelete(DeleteView):
     model = Report_item
     success_url = reverse_lazy('feed:index')
@@ -146,7 +162,7 @@ class RequestItem(generic.CreateView):
         print(self.kwargs)
 
         self.object = form.save(commit=False)
-        qs=Report_item.objects.filter(id=self.kwargs.get("pk"))
+        qs = Report_item.objects.filter(id=self.kwargs.get("pk"))
         self.object.user = qs[0].owner
         self.object.save()
         return HttpResponse("<h1>Hello Friends </h1>")
@@ -154,11 +170,10 @@ class RequestItem(generic.CreateView):
 
 def show_notification(request, notification_id):
     n = UserNotification.objects.get(id=notification_id)
-    print(n)
     context = {
         "notification": n,
     }
-    return render(request, "notification/notification.html", context)
+    return render(request, "feed/notification.html", context)
 
 
 def read_notification(request, notification_id):
@@ -169,8 +184,7 @@ def read_notification(request, notification_id):
 
 
 def mynotification(request):
-
     n = UserNotification.objects.filter(user=request.user, viewed=False)
     print(type(n))
-    return render_to_response("notification/loggedin.html",
+    return render_to_response("feed/loggedin.html",
                               {'full_name': request.user.first_name, 'notification': n, })
