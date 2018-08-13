@@ -48,10 +48,20 @@
 
   <div class="col-md-3">
       <form class="navbar-form navbar-right" action="">
-          <div class="form-group">
-              <input type="text" name='q' class="form-control" placeholder="Search lost item" value="{{ request.GET.q }}"/>
-          </div>
-          <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
+          <table>
+              <tr>
+                  <td class="form-td">
+                      <div class="form-group">
+                        <input type="text" name='q' class="form-control" placeholder="Search lost item" value="{{ request.GET.q }}"/>
+                        </div>
+                  </td>
+                  <td class="form-td">
+                          <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                  </td>
+              </tr>
+          </table>
+
+
         </form>
   </div>
   </div>

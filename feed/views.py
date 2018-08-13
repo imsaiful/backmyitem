@@ -15,6 +15,8 @@ from django.contrib.auth import logout
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
 from django.core.urlresolvers import reverse_lazy
+from django.db.models import Q
+
 
 
 def IndexView(request):
@@ -23,7 +25,10 @@ def IndexView(request):
         query_list = Report_item.objects.all()
         query = request.GET.get('q')
         if query:
-            query_list = query_list.filter(category__icontains=query)
+            query_list = query_list.filter(Q(title__icontains=query) |
+                                           Q(item_type__icontains=query) |
+                                           Q(city__icontains=query) |
+                                           Q(Description__icontains=query)).distinct()
         context = {
             "object_list": query_list,
         }
@@ -32,7 +37,11 @@ def IndexView(request):
         query_list = Report_item.objects.all()
         query = request.GET.get('q')
         if query:
-            query_list = query_list.filter(category__icontains=query)
+            query_list = query_list.filter(Q(title__icontains=query) |
+                                           Q(item_type__icontains=query) |
+                                           Q(city__icontains=query) |
+                                           Q(location__icontains=query) |
+                                           Q(Description__icontains=query)).distinct()
 
         n = UserNotification.objects.filter(user=request.user, viewed=False)
         context = {
@@ -124,7 +133,7 @@ class LoginForm(generic.CreateView):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect('feed:report')
+                    return redirect('')
         else:
             print(form.errors)
 
