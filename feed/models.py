@@ -20,7 +20,7 @@ class Report_item(models.Model):
     location = models.CharField(max_length=60, help_text='*Enter the address/street where you find this item')
     city = models.CharField(max_length=60, help_text='*Enter the city name')
     date = models.DateTimeField(default=timezone.now)
-    Description = models.TextField(help_text='*Enter full description about item')
+    Description = models.TextField(blank=True,null=True,help_text='*Enter full description about item')
     publish = models.BooleanField(default=False)
 
     image = models.FileField(default="add Item image",

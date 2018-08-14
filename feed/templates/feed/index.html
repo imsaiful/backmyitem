@@ -30,8 +30,22 @@
   </div>
 
   <div class="col-md-3 col-md-pull-6">
-      <p>Search by Category</p>
-      <hr>
+      <div class="thumbnail-center">
+            <font size="3">
+            <p>Search Your lost Item</p>
+            </font>
+             <div id="search-bar">
+                <form action="">
+                    <input type="text" placeholder="Search.." name='q' value="{{ request.GET.q }}">
+                </form>
+             </div>
+      </div>
+      <div class="thumbnail-center">
+            <font size="3">
+             <p>Search by Category</p>
+            </font>
+
+      </div>
       <ul>
           <li><a href="/category/marksheet">Marksheet</a></li>
           <li><a href="/category/passport">Passport</a></li>
@@ -43,26 +57,19 @@
           <li><a href="/category/purse">Wallet and Purse</a></li>
           <li><a href="/category/bag">Bag</a></li>
       </ul>
+
   </div>
 
 
   <div class="col-md-3">
-      <form class="navbar-form navbar-right" action="">
-          <table>
-              <tr>
-                  <td class="form-td">
-                      <div class="form-group">
-                        <input type="text" name='q' class="form-control" placeholder="Search lost item" value="{{ request.GET.q }}"/>
-                        </div>
-                  </td>
-                  <td class="form-td">
-                          <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
-                  </td>
-              </tr>
-          </table>
+      <div class="thumbnail-center">
+            <font size="3">
+             <p>Change your language</p>
+            </font>
 
-
-        </form>
+      </div>
+      <div id="google_translate_element">
+      </div>
   </div>
   </div>
 </div>

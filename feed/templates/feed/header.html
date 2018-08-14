@@ -5,6 +5,24 @@
     <title>Back My Item</title>
     <meta charset="utf-8">
     <style>
+    #search-bar input[type=text] {
+    width: 70%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+    background-color: white;
+    background-image: url('');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+#search-bar input[type=text]:focus {
+    width: 100%;
+}
     .form-td{
         width:100%;
         margin:-5px;
