@@ -180,7 +180,7 @@ class RequestItem(generic.CreateView):
 def show_notification(request, notification_id):
     n = UserNotification.objects.get(id=notification_id)
     context = {
-        "notification": n,
+        "n": n,
     }
     return render(request, "feed/notification.html", context)
 
