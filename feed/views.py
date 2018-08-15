@@ -19,6 +19,7 @@ from django.db.models import Q
 
 
 
+
 def IndexView(request):
     if request.user.is_anonymous:
         print("Hello")
@@ -182,6 +183,8 @@ def show_notification(request, notification_id):
     context = {
         "n": n,
     }
+    n.viewed = True
+    n.save()
     return render(request, "feed/notification.html", context)
 
 
@@ -197,3 +200,11 @@ def mynotification(request):
     print(type(n))
     return render_to_response("feed/loggedin.html",
                               {'full_name': request.user.first_name, 'notification': n, })
+
+def read_Notification(request):
+    n = UserNotification.objects.filter(user=request.user)
+    print(type(n))
+    return render_to_response("feed/loggedin.html",
+                              {'full_name': request.user.first_name, 'notification': n, })
+
+

@@ -8,12 +8,16 @@
         </ul>
     </div>
     <div class="col-md-6">
-        <h2>Welcome &nbsp;{{ full_name }} &nbsp;</h2>
             {% if notification %}
-                <h3>Notification</h3>
+             <div class="thumbnail-center">
+                <font size="3">
+                    <p>{{ full_name }} Click on the link to contact the person</p>
+                </font>
+             </div>
                 {% for n in notification %}
-                    <p><a href="{% url 'feed:show_notification' n.id %}">{{n.Name}} requested for the item</a></p>
-                    <hr>
+                    <div class="thumbnail">
+                        <p><a href="{% url 'feed:show_notification' n.id %}">{{n.Name}} requested for the item</a></p>
+                    </div>
                 {% endfor %}
             {% else %}
              <div class="thumbnail-center">

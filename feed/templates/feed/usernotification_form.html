@@ -21,7 +21,12 @@
                  <div class="row">
                     <div class="col-md-5"></div>
                     <div class="col-md-7">
+                        {% if user.is_authenticated %}
                             <button type="submit" class="login-btn btn btn-success">Request to return</button>
+                        {% else %}
+                            <button type="submit" class="login-btn btn btn-success" disabled>Request to return</button>
+                            <p style="color:red;">*Please <a href="{% url 'login' %}">login</a>to request yout item</p>
+                        {% endif %}
                     </div>
 
 

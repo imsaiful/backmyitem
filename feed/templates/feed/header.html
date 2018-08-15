@@ -5,6 +5,9 @@
     <title>Back My Item</title>
     <meta charset="utf-8">
     <style>
+    .notify-table{
+    width:300px;
+    }
     #search-bar input[type=text] {
     width: 70%;
     box-sizing: border-box;
@@ -89,6 +92,13 @@
         }
         .my-td-item{
           color:red;
+          width:20%;
+        }
+
+        .my-report-form{
+
+        padding-right:5%;
+        padding-left:5%;
         }
 input[type=text],input[type=email],input[type=number] , input[type=password], select, textarea {
   width: 100%;
@@ -123,6 +133,10 @@ input[type=submit] {
   width: 100%;
 }
 
+.my-td-item-notf{
+padding-left:10%;
+}
+
 input[type=submit]:hover {
     background-color: #45a049;
 }
@@ -139,6 +153,16 @@ text-align:center;
   padding:5%;
   margin:5%;
 }
+.widget-title {
+font-family: Futura;
+font-weight: 300;
+text-transform: uppercase;
+color: #ffffff;
+font-family: 16px;
+letter-spacing: 2px;
+width: 200px;
+padding-left: 20%; }
+
 
 
 
@@ -181,23 +205,20 @@ footer{
           {% if user.is_authenticated %}
         <ul class="nav navbar-nav navbar-left">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-bullhorn">&nbsp;Notification (<b>{{ count }}</b>)</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-bullhorn">&nbsp;Notification (<b>{{ count }}</b>)</span></a>
 
             <ul class="dropdown-menu notify-drop">
-            <div class="notify-drop-title">
-            	<div class="row">
-
-            		<div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href="" class="rIcon allRead" data-tooltip="tooltip" data-placement="bottom" title="tümü okundu."><i class="fa fa-dot-circle-o"></i></a></div>
-            	</div>
-            </div>
             <!-- end notify title -->
             <!-- notify content -->
             <div class="drop-content">
             {% if notification %}
+                <table class="notify-table">
                 {% for n in notification %}
-                    <p><a href="{% url 'feed:show_notification' n.id %}">{{n.Name}} requested for the item</a></p>
-                    <hr>
+                    <tr><td><p><a href="{% url 'feed:show_notification' n.id %}"><b>{{n.Name}}</b> requested for the item</a></p></td></tr>
                 {% endfor %}
+                </table>
+                <hr>
+                <p><a href="{% url 'feed:readnotification' %}">View All Notification</a></p>
             {% else %}
              <div class="thumbnail-center">
                  <font size="4">
@@ -211,15 +232,13 @@ footer{
       </ul>
         {% endif %}
       </ul>
-              <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right">
       {% if not user.is_authenticated %}
             <li><a href="{% url 'feed:signup' %}"><span class="glyphicon glyphicon-user"></span>&nbsp;Sign Up</a></li>
             <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
-        {% else %}
-
+      {% else %}
           <li><a href="{% url 'feed:profile' user.username %}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;{{ user.username }}</a></li>
           <li><a href="{% url 'feed:logout' %}"><span class="glyphicon glyphicon-log-out"></span>&nbsp;logout</a></li>
-
       </ul>
 
 

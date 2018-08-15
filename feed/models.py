@@ -41,8 +41,10 @@ class ClaimForm(models.Model):
     Your_mobile_number = models.CharField(max_length=10, validators=[RegexValidator(r'^\d{1,10}$')])
     Detail_proof = models.TextField()
 
+
     def __str__(self):
         return self.Your_name + " " + self.Detail_of_proof
+
 
 
 
@@ -53,11 +55,13 @@ class UserNotification(models.Model):
     Proof = models.TextField()
     viewed = models.BooleanField(default=False)
     user = models.ForeignKey(User)
+    date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.Name
 
-
+    class Meta:
+        ordering = ["-date"]
 
 
 # Create your models here.

@@ -7,23 +7,21 @@
     </div>
     <div class="col-md-6">
         <div class="thumbnail">
-            <table class="table table-responsive mytable">
-                <tr><td class="noborders">Person Name</td><td class="noborders">{{ n.Name }}</td></tr>
-                <tr><td class="noborders">Mobile Number</td><td class="noborders">{{ n.Mobile_No }}</td></tr>
-                <tr><td class="noborders">Proof</td><td class="noborders">{{ n.Proof }}</td></tr>
-            </table>
+             <div class="thumbnail-center">
+                <font size="3">
+                    <p>Please return the item only with valid proof</p>
+                </font>
+             </div>
+             <table class="mytable table-responsive">
+                <tr><td class="my-td-item">Person Name</td><td class="my-td-item-notf">{{ n.Name }}</td></tr>
+                <tr><td class="my-td-item">Mobile Number</td><td class="my-td-item-notf">{{ n.Mobile_No }}</td></tr>
+                <tr><td class="my-td-item">Proof</td><td class="my-td-item-notf">{{ n.Proof }}</td></tr>
+             </table>
 
         </div>
-        <h2></h2>
-        <h2></h2>
-        <h2></h2>
-
     </div>
     <div class="col-md-3">
 
     </div>
 </div>
-
-
-<p><a href="">Marked Notification</a></p>
 {% endblock %}
