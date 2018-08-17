@@ -2,65 +2,43 @@ from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.edit import FormMixin
 
-from .models import Report_item, ClaimForm, UserNotification
+from .models import Report_item, ClaimForm, UserNotification, ContactHelp
 from django.views import generic
-from django.db.models import Q
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
-from django.utils import timezone
 from django.views.generic import View, UpdateView, DeleteView
 from .forms import SignUpForm, LoginForm
 from django.contrib.auth import logout
 
 from django.contrib.auth import get_user_model
-from django.contrib.auth.backends import ModelBackend
 from django.core.urlresolvers import reverse_lazy
 from django.db.models import Q
 
 
-
-
 def IndexView(request):
-    if request.user.is_anonymous:
-        print("Hello")
-        query_list = Report_item.objects.all()
-        query = request.GET.get('q')
-        if query:
-            query_list = query_list.filter(Q(title__icontains=query) |
-                                           Q(item_type__icontains=query) |
-                                           Q(city__icontains=query) |
-                                           Q(Description__icontains=query)).distinct()
-        context = {
-            "object_list": query_list,
-        }
-        return render(request, "feed/index.html", context)
-    else:
-        query_list = Report_item.objects.all()
-        query = request.GET.get('q')
-        if query:
-            query_list = query_list.filter(Q(title__icontains=query) |
-                                           Q(item_type__icontains=query) |
-                                           Q(city__icontains=query) |
-                                           Q(location__icontains=query) |
-                                           Q(Description__icontains=query)).distinct()
+    query_list = Report_item.objects.all()
+    query = request.GET.get('q')
+    if query:
+        query_list = query_list.filter(Q(title__icontains=query) |
+                                       Q(item_type__icontains=query) |
+                                       Q(city__icontains=query) |
+                                       Q(location__icontains=query) |
+                                       Q(Description__icontains=query)).distinct()
 
-        n = UserNotification.objects.filter(user=request.user, viewed=False)
-        context = {
-            "object_list": query_list,
-            'notification': n,
-            'count': n.count(),
-        }
-        return render(request, "feed/index.html", context)
+    context = {
+        "object_list": query_list
+    }
+    return render(request, "feed/index.html", context)
 
 
-class SearchCtaegoryView(generic.ListView):
+class SearchItemType(generic.ListView):
     template_name = "feed/index.html"
 
     def get_queryset(self):
         query_list = Report_item.objects.all()
         slug = self.kwargs.get("slug")
         if slug:
-            query_list = query_list.filter(Q(category__icontains=slug) | Q(category__iexact=slug))
+            query_list = query_list.filter(Q(item_type__icontains=slug) | Q(item_type__iexact=slug))
         return query_list
 
 
@@ -201,6 +179,7 @@ def mynotification(request):
     return render_to_response("feed/loggedin.html",
                               {'full_name': request.user.first_name, 'notification': n, })
 
+
 def read_Notification(request):
     n = UserNotification.objects.filter(user=request.user)
     print(type(n))
@@ -208,3 +187,25 @@ def read_Notification(request):
                               {'full_name': request.user.first_name, 'notification': n, })
 
 
+def home_page(request):
+    return render(request, "static_page/about_us.html", {})
+
+
+class Contact_page(generic.CreateView):
+    model = ContactHelp
+    fields = ['Name', 'Email', 'query']
+    success_url = reverse_lazy('feed:index')
+
+
+def TeamPage(request):
+    return render(request, "static_page/our_team.html", {})
+
+
+def notification_context(request):
+    if request.user.is_anonymous:
+        return {}
+    n = UserNotification.objects.filter(user=request.user, viewed=False)
+    return {
+        'notification': n,
+        'count': n.count(),
+    }

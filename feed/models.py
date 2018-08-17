@@ -64,4 +64,19 @@ class UserNotification(models.Model):
         ordering = ["-date"]
 
 
+class ContactHelp(models.Model):
+    Name = models.CharField(max_length=250)
+    Email=models.EmailField(blank=False,null=False)
+    query=models.TextField(blank=False,null=False)
+    date=models.DateTimeField(default=timezone.now)
+    def __str__(self):
+        return self.query
+
+
+
+
+
+
+
+
 # Create your models here.

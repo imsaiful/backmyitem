@@ -4,23 +4,24 @@
         <div class="row">
             <div class="col-md-4">
                 <ul><h4><b>Get to Know Us</b></h4>
-                    <li><h5>About Us</h5></li>
-                    <li><h5>Contact Us</h5></li>
-                    <li><h5>Our Team</h5></li>
-                    <li><h5>Career</h5></li>
+                    <li><h5><a href="{% url 'feed:about'%}">About Us</a></h5></li>
+                    <li><h5><a href="{% url 'feed:contact'%}">Contact Us</a></h5></li>
+                    <li><h5><a href="{% url 'feed:team'%}">Our Team</a></h5></li>
                 </ul>
             </div>
             <div class="col-md-4">
                     <ul><h4><b>Follow US</b></h4>
-                    <li><h5>Facebook</h5></li>
-                    <li><h5>Twitter</h5></li>
+                    <li><h5><a href="https://www.facebook.com/Back-My-Item-267792973827571/?modal=admin_todo_tour"> Facebook</a></h5></li>
+                        <li><h5><a href="https://twitter.com/backmyitem">Twitter</a></h5></li>
                     <li><h5>Instagram</h5></li>
                 </ul>
             </div>
             <div class="col-md-4">
                 <ul><h4><b>Useful Links</b></h4>
-                    <li><h5>Privacy Policy</h5></li>
-                    <li><h5>Help</h5></li>
+                    <li><h5><a href="{% url 'feed:login'%}"> Login</a></h5></li>
+                    <li><h5><a href="{% url 'feed:signup'%}"> SignUp</a></h5></li>
+                    <li><h5><a href="{% url 'feed:report'%}">Report</a></h5></li>
+
                 </ul>
             </div>
         </div>
@@ -49,7 +50,6 @@ function googleTranslateElementInit() {
 }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-
 </script>
 </body>
 </html>

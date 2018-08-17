@@ -1,0 +1,48 @@
+{% extends 'feed/base.html'%}
+{% block content %}
+<div class="container">
+<div class="row">
+  <div class="col-md-3">
+  </div>
+    <div class="col-md-5">
+        <div class="thumbnail" style="padding-right:5%;">
+         <div class="about-heading">
+                <p>Contact Us</p><br>
+                <small>What can we help you with?</small>
+            </div>    <hr>
+        <form class="form-herizontal" action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+              {% if form.errors %}
+                <p>{{ form.errors }}</p>
+              {% endif %}
+            {% include 'feed/form_template.html'%}
+            <br>
+                 <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-7">
+                            <button type="submit" class="login-btn btn btn-success">Submit Query</button>
+                    </div>
+
+
+                </div>
+            <br>
+
+        </form>
+        </div>
+    </div>
+  <div class="col-md-4">
+      <div class="thumbnail thumbnail-center">
+            <table class="table-responsive">
+
+                <tr><td class="my-td-item" colspan="2">Mailing Address</td></tr>
+                <tr><td class="my-td-item">Address:</td><td><small><strong>Home 19,Top Khana Road,Rampur,UP,India</strong></small></td></tr>
+                <tr><td class="my-td-item">Phone</td><td><small><strong>+91 8826478938</strong></small></td></tr>
+                <tr><td class="my-td-item">Email</td><td><small><strong>backmyitem@gmail.com</strong></small></td></tr>
+            </table>
+        </div>
+  </div>
+  </div>
+</div>
+  <br>
+            <br>
+ {% endblock %}

@@ -8,7 +8,7 @@
         <div class="thumbnail my-report-form">
             <div class="thumbnail-center">
             <font size="4">
-            <p>Congrates! You are going to become someone happiness.</p>
+            <p>Congrats! You are going to become someone's happiness.</p>
             </font>
         </div>
         <form class="form-herizontal my-report-form" action="" method="POST" enctype="multipart/form-data">
@@ -24,23 +24,27 @@
                     </div>
                 {% endif %}
                  {% if user.is_authenticated %}
+                    <br>
                      <div class="row">
                         <div class="col-md-5"></div>
                         <div class="col-md-7">
-                                <button type="submit" class="login-btn btn btn-success">Submit</button>
+                                <button type="submit" class="login-btn btn btn-success">Submit</button><br><br>
                         </div>
                      </div>
                  {% else %}
                      <div class="row">
                         <div class="col-md-5"></div>
                         <div class="col-md-7">
-                                <button type="submit" class="login-btn btn btn-success" disabled>Submit</button>
+                                <button type="submit" class="login-btn btn btn-success" disabled>Submit</button><br><br>
                         </div>
                  {% endif %}
                      </div>
 
+
+
             <br>
         </form>
+
         </div>
     </div>
   <div class="col-md-3">

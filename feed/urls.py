@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^report$', views.ReportCreate.as_view(), name='report'),
     url(r'^claimForm/(?P<pk>[0-9]+)/$', views.ClaimForm.as_view(), name='claim'),
     url(r'^detail/(?P<pk>[0-9]+)/$', views.ReportDetail.as_view(), name='detail'),
-    url(r'^category/(?P<slug>\w+)/$', views.SearchCtaegoryView.as_view(), name='category'),
+    url(r'^category/(?P<slug>\w+)/$', views.SearchItemType.as_view(), name='category'),
     url(r'^signup$', views.SignUpForm.as_view(), name='signup'),
     url(r'^login$', views.LoginForm.as_view(), name='login'),
 
@@ -27,6 +27,11 @@ urlpatterns = [
     url(r'^notification/read/(?P<notification_id>\d+)/$', views.read_notification, name='read_notification'),
     url(r'^notification/request/(?P<pk>[0-9]+)/$', views.RequestItem.as_view(), name='request'),
 
+
+    #static pages
+    url(r'^about/$', views.home_page, name='about'),
+    url(r'^contact/$', views.Contact_page.as_view(), name='contact'),
+    url(r'^team/$', views.TeamPage , name='team'),
 
 
 ]
