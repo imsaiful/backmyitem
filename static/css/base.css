@@ -1,0 +1,195 @@
+.notify-table{
+    width:300px;
+    }
+    #search-bar input[type=text] {
+    width: 70%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+    background-color: white;
+    background-image: url('');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+#search-bar input[type=text]:focus {
+    width: 100%;
+}
+    .form-td{
+        width:100%;
+        margin:-5px;
+        padding:-10px;
+    }
+    .profile-btn-div{
+    margin-left:5%;
+    margin-top:5%;
+    }
+    .signup-thumbnail{
+        padding-right:5%;
+    }
+    .thumbnail-center{
+     text-align:center;
+     margin-top:10%;
+     margin-bottom:10%;
+     font-weight:bold;
+     color:#BDBDBD;
+    }
+    .logo {
+    padding-left:20%;
+    padding-right:15%;
+    padding-top:10%;
+    text-align: center;
+    color:#AA2200;
+     font-weight: bold;
+     font-style: italic;
+      font-size: 40px;
+    }
+      .logo{
+        width:15%;
+        height:80%;
+      }
+        .more-detail-button{
+            text-align: center;
+             color:#AA2200;
+        }
+        .more-detail-div{
+            text-align: center;
+        }
+
+        .mynav , .navbar-default {
+                    background-color: #FFFFFF!important;
+                    border-color: #E7E7E7;
+                }
+        .mynav{
+           height: 50%;
+        }
+
+        body {
+                background-color: #F8F8F8!important;
+                margin-top: 65px;
+                padding-top: 65px;
+            }
+            .navbar-brand{
+              color:#AA2200!important;
+               font-weight: bold;
+               font-size: 30px !important;
+          font-style: italic;
+            }
+            td {border: 0;}
+        .mytable{
+           border-collapse: separate;
+            border-spacing: 15px 15px;
+            border: 0px !important;
+
+        }
+        .my-td-item{
+          color:#AA2200;
+          width:20%;
+          font-weight:bold;
+        }
+
+        .my-report-form{
+
+        padding-right:5%;
+        padding-left:5%;
+        }
+input[type=text],input[type=email],input[type=number] , input[type=password], select, textarea {
+  width: 100%;
+  padding: 1px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  padding: 8px 15px;
+    margin: 8px 0;
+}
+
+label {
+    padding: 2px 2px 2px 0;
+    display: inline-block;
+}
+.signupdiv{
+
+  text-align:center;
+  margin-top:2px;
+  padding-top:10px;
+}
+input[type=submit] {
+  background-color: #0693cd;
+
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  font-size:16px;
+  font-weight: bold;
+  line-height: 1.4;
+  padding: 6px;
+  width: 100%;
+
+}
+
+.my-td-item-notf{
+padding-left:10%;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.login-btn{
+    width:100%;
+    margin: auto;
+
+}
+.reset{
+text-align:center;
+}
+.request-btn{
+ width:80%;
+  padding:5%;
+  margin:5%;
+}
+.widget-title {
+font-family: Futura;
+font-weight: 300;
+text-transform: uppercase;
+color: #ffffff;
+font-family: 16px;
+letter-spacing: 2px;
+width: 200px;
+padding-left: 20%; }
+.navbar-brand {
+    overflow: visible;
+    padding-top: 0;
+    padding-bottom: 0;
+    color:AA2200;
+}
+
+
+
+footer, footer a{
+            background:#414141;
+            text-height: 24px;
+            color:white;
+            font-weight: 700;
+            margin-top:18em;
+        }
+
+
+        .more-detail-btn{
+        width:100%;
+        border: none;
+        }
+
+
+.about-heading{
+color:#AA2200!important;
+               font-weight: bold;
+               font-size: 30px !important;
+                text-align:center;
+}
+
