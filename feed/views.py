@@ -16,7 +16,7 @@ from django.db.models import Q
 
 
 def IndexView(request):
-    query_list = Report_item.objects.all()
+    query_list = Report_item.objects.filter(publish=True)
     query = request.GET.get('q')
     if query:
         query_list = query_list.filter(Q(title__icontains=query) |

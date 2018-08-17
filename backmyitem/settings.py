@@ -83,9 +83,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'myammaji',
-        'USER': 'piro',
+        'USER': 'myammaji',
         'PASSWORD': 'N@sara0806196',
-        'HOST': 'localhost',
+        'HOST': 'myammaji.cxcj5ar2c2ex.us-east-2.rds.amazonaws.com',
         'PORT': '5432'
     }
 }
