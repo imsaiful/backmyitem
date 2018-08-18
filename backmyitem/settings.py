@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'hu=x&fy*+)9z*^$n+2h=+g%4bx!gn%*xylu__+_p%(w+mwqq)3'
+# SECRET_KEY = 'hu=x&fy*+)9z*^$n+2h=+g%4bx!gn%*xylu__+_p%(w+mwqq)3'
 SECRET_KEY = os.getenv('SECRET_KEY'),
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -27,7 +27,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'ec2-18-216-152-59.us-east-2.compute.amazonaws.com','ec2-13-232-209-235.ap-south-1.compute.amazonaws.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'ec2-13-232-209-235.ap-south-1.compute.amazonaws.com']
 
 # Application definition
 
@@ -72,8 +72,6 @@ TEMPLATES = [
 
 ]
 
-
-
 WSGI_APPLICATION = 'backmyitem.wsgi.application'
 
 # Database
@@ -81,11 +79,11 @@ WSGI_APPLICATION = 'backmyitem.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'myammaji',
-        'USER': 'myammaji',
-        'PASSWORD': 'N@sara0806196',
-        'HOST': 'myammaji.cxcj5ar2c2ex.us-east-2.rds.amazonaws.com',
+        'USER': 'imsaiful',
+        'PASSWORD': 'realammaji',
+        'HOST': 'myammaji.cbgocwwown9z.ap-south-1.rds.amazonaws.com',
         'PORT': '5432'
     }
 }
@@ -110,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
-LOGIN_REDIRECT_URL='/report'
+LOGIN_REDIRECT_URL = '/report'
 
 LANGUAGE_CODE = 'en-us'
 
@@ -124,13 +122,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_PORT=587
-EMAIL_HOST_USER='saifulcseng@gmail.com'
-EMAIL_HOST_PASSWORD='N@sara0806196'
-EMAIL_USE_TLS=True
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'saifulcseng@gmail.com'
+EMAIL_HOST_PASSWORD = 'N@sara0806196'
+EMAIL_USE_TLS = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, "..", "static")
 STATIC_URL = '/static/'
@@ -141,4 +138,3 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-
