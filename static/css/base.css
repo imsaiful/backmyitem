@@ -198,5 +198,14 @@ footer a:hover{
             color:white;
 }
 
+footer ul li h5 a:hover{
+               text-height: 36px;
+            color:white;
+}
 
 
+
+h5 a:hover{
+               text-height: 36px;
+            color:white;
+}
