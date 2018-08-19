@@ -153,7 +153,7 @@ class RequestItem(generic.CreateView):
         qs = Report_item.objects.filter(id=self.kwargs.get("pk"))
         self.object.user = qs[0].owner
         self.object.save()
-        return HttpResponse("<h1>Hello Friends </h1>")
+        return HttpResponse("<h1>Tour request has been processed</h1>")
 
 
 def show_notification(request, notification_id):
@@ -170,7 +170,7 @@ def read_notification(request, notification_id):
     n = UserNotification.objects.get(id=notification_id)
     n.viewed = True
     n.save()
-    return HttpResponse("<h1>Hello Friends chai pee lo</h1>")
+    return HttpResponse("<h1>Tour request has been processed</h1>")
 
 
 def mynotification(request):
