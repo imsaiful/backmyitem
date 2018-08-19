@@ -51,7 +51,7 @@ class ClaimForm(models.Model):
 
 class UserNotification(models.Model):
     Name = models.CharField(max_length=250)
-    Mobile_No = models.IntegerField(validators=[MaxValueValidator(9999999999)])
+    Mobile_No = models.CharField(max_length=10, validators=[RegexValidator(r'^\d{1,10}$')])
     Proof = models.TextField()
     viewed = models.BooleanField(default=False)
     user = models.ForeignKey(User)
