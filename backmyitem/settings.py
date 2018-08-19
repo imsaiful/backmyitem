@@ -25,9 +25,9 @@ SECRET_KEY = os.getenv('SECRET_KEY'),
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'ec2-13-232-169-250.ap-south-1.compute.amazonaws.com','backmyitem.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'ec2-13-232-169-250.ap-south-1.compute.amazonaws.com','backmyitem.com','ec2-18-216-152-59.us-east-2.compute.amazonaws.com']
 
 # Application definition
 
