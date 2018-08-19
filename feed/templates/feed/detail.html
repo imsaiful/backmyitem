@@ -15,27 +15,20 @@
                 <tr><td class="my-td-item">Image</td><td>{% if object.image%}<img class="img-responsive" src="{{ object.image.url }}" alt="backmyitem" width="300" height="200"> {% endif %}</td></tr>
 
           </table>
-           <div class="row">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-4">
-                        <a href="{% url 'feed:request' object.id  %}">
+           <div class="row" >
+                    <div class="col-md-12" style="display:flex; justify-content:center;">
+                        <table class="table-responsive" style="border:0px; align-self:center;">
+                            <tr><td style="width:40%;"><a href="{% url 'feed:request' object.id  %}">
                           <button type="button" class="request-btn btn btn-default btn-sm">
                               <span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;Request to return
                           </button>
-                        </a>
-                    </div>
-               <div class="col-md-1">
-                    </div><div class="col-md-1">
-                    </div>
-                    <div class="col-md-4">
-                       <button type="button" class="request-btn btn btn-default btn-sm">
+                        </a></td><td style="width:40%;"><button type="button" class="request-btn btn btn-default btn-sm">
                         <span class="glyphicon glyphicon-share-alt"></span> Share
-                      </button>
+                      </button></td></tr>
 
+                        </table>
                     </div>
-               <div class="col-md-1">
-                    </div>
+
 
            </div>
           <div class="thumbnail-center">
