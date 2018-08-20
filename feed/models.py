@@ -23,7 +23,7 @@ class Report_item(models.Model):
     Description = models.TextField(blank=True,null=True,help_text='*Enter full description about item')
     publish = models.BooleanField(default=False)
 
-    image = models.FileField(default="add Item image",
+    image = models.ImageField(default="add Item image",
                              help_text='*Please uplocad a item image to identify by the owner')
 
     def __str__(self):

@@ -22,15 +22,14 @@
                           <button type="button" class="request-btn btn btn-default btn-sm">
                               <span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;Request to return
                           </button>
-                        </a></td><td style="width:40%;"><button type="button" class="request-btn btn btn-default btn-sm">
-                        <span class="glyphicon glyphicon-share-alt"></span> Share
-                      </button></td></tr>
+                        </a></td><td style="width:40%;"><div class="fb-share-button" data-href="http://backmyitem.com/" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbackmyitem.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div></td></tr>
 
                         </table>
                     </div>
 
 
            </div>
+
           <div class="thumbnail-center">
               <font size="4"><p>Click on <b>Request to return</b> Button if this is your item</p></font>
           </div>
@@ -40,5 +39,17 @@
   <div class="col-md-3">
   </div>
   </div>
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+             <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-width="100%" data-numposts="5"></div>
+        </div>
+        <div class="col-md-3">
+        </div>
+
+
+    </div>
+
 </div>
  {% endblock %}
