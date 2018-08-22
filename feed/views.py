@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.edit import FormMixin
@@ -25,10 +26,12 @@ def IndexView(request):
                                        Q(location__icontains=query) |
                                        Q(Description__icontains=query)).distinct()
 
-    context = {
-        "object_list": query_list
-    }
-    return render(request, "feed/index.html", context)
+    paginator = Paginator(query_list, 5)  # Show 25 contacts per page
+
+    page = request.GET.get('page')
+    contacts = paginator.get_page(page)
+    return render(request,"feed/index.html", {'contacts': contacts})
+
 
 
 class SearchItemType(generic.ListView):
