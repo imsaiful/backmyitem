@@ -86,6 +86,28 @@
             border: 0px !important;
 
         }
+        .pagination-table{
+            border-collapse: separate;
+            border-spacing: 10px 10px;
+            border: 0px !important;
+
+        }
+
+        .pagination-table tr td button, .pagination-table tr td a {
+
+           font-size: 10px;
+    border-radius: 8px;
+    color:white;
+            font-weight: 700;
+
+        }
+        .btn-block {
+
+            padding: 10% 0;
+
+        }
+
+
         .my-td-item{
           color:#AA2200;
           width:20%;
@@ -211,4 +233,15 @@ h5 a:hover{
 }
 .fb-share-button{
 margin-top:5%;
+}
+
+
+#my_centered_buttons{
+display: block;
+margin: 0 auto;
+}
+
+
+.pagination table{
+ margin:0 auto;
 }

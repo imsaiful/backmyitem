@@ -1,4 +1,4 @@
-from django.core.paginator import Paginator
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.edit import FormMixin
@@ -26,11 +26,19 @@ def IndexView(request):
                                        Q(location__icontains=query) |
                                        Q(Description__icontains=query)).distinct()
 
-    paginator = Paginator(query_list, 5)  # Show 25 contacts per page
-
+    paginator = Paginator(query_list, 2)
     page = request.GET.get('page')
-    contacts = paginator.get_page(page)
-    return render(request,"feed/index.html", {'contacts': contacts})
+    try:
+        qs = paginator.page(page)
+    except PageNotAnInteger:
+        qs = paginator.page(1)
+    except EmptyPage:
+        qs = paginator.page(paginator.num_pages)
+    context = {
+        "object_list":qs
+    }
+
+    return render(request,"feed/index.html", context)
 
 
 
