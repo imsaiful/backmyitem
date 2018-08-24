@@ -26,7 +26,7 @@ def IndexView(request):
                                        Q(location__icontains=query) |
                                        Q(Description__icontains=query)).distinct()
 
-    paginator = Paginator(query_list, 2)
+    paginator = Paginator(query_list, 5)
     page = request.GET.get('page')
     try:
         qs = paginator.page(page)
@@ -46,10 +46,10 @@ class SearchItemType(generic.ListView):
     template_name = "feed/index.html"
 
     def get_queryset(self):
-        query_list = Report_item.objects.all()
+        query_list = Report_item.objects.filter(publish=True)
         slug = self.kwargs.get("slug")
         if slug:
-            query_list = query_list.filter(Q(item_type__icontains=slug) | Q(item_type__iexact=slug))
+            query_list = query_list.filter(Q(item_type__icontains=slug))
         return query_list
 
 

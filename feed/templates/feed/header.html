@@ -64,7 +64,7 @@
             <li><a href="{% url 'feed:signup' %}"><span class="glyphicon glyphicon-user"></span>&nbsp;Sign Up</a></li>
             <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
       {% else %}
-          <li><a href="{% url 'feed:profile' user.username %}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;{{ user.username }}</a></li>
+          <li><a href="{% url 'feed:profile' user.username %}"><span class="glyphicon glyphicon-user"></span>&nbsp;{{ user.username }}</a></li>
           <li><a href="{% url 'feed:logout' %}"><span class="glyphicon glyphicon-log-out"></span>&nbsp;logout</a></li>
       </ul>
 
