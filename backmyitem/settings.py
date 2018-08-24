@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-
+from decouple import config
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,9 +25,9 @@ SECRET_KEY = os.getenv('SECRET_KEY'),
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'ec2-13-232-169-250.ap-south-1.compute.amazonaws.com','backmyitem.com','ec2-18-216-152-59.us-east-2.compute.amazonaws.com']
+ALLOWED_HOSTS = ['127.0.0.1','backmyitem.com']
 
 # Application definition
 
@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'backmyitem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'myammaji',
-        'USER': 'imsaiful',
-        'PASSWORD': 'realammaji',
-        'HOST': 'myammaji.cbgocwwown9z.ap-south-1.rds.amazonaws.com',
-        'PORT': '5432'
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
     }
 }
 
@@ -124,10 +124,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'saifulcseng@gmail.com'
-EMAIL_HOST_PASSWORD = 'N@sara0806196'
-EMAIL_USE_TLS = True
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+
 
 STATIC_ROOT = os.path.join(BASE_DIR, "..", "static")
 STATIC_URL = '/static/'
@@ -141,17 +142,19 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-AWS_ACCESS_KEY_ID = 'AKIAJ5QB7WGZ5BJOR74A'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'backmyitem'
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 
-AWS_LOCATION = 'static'
+AWS_LOCATION = config('AWS_LOCATION')
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
-DEFAULT_FILE_STORAGE = 'backmyitem.storage_backends.MediaStorage'
+DEFAULT_FILE_STORAGE = config('DEFAULT_FILE_STORAGE')
+

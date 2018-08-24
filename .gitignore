@@ -4,3 +4,4 @@ __pycache__
 myvenv
 myammaji
 .DS_Store
+.env
