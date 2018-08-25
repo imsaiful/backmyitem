@@ -1,4 +1,5 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.forms import Textarea, forms,TextInput,ImageField
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.edit import FormMixin
@@ -8,7 +9,7 @@ from django.views import generic
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.views.generic import View, UpdateView, DeleteView
-from .forms import SignUpForm, LoginForm
+from .forms import SignUpForm, LoginForm, ReportForm
 from django.contrib.auth import logout
 
 from django.contrib.auth import get_user_model
@@ -35,11 +36,10 @@ def IndexView(request):
     except EmptyPage:
         qs = paginator.page(paginator.num_pages)
     context = {
-        "object_list":qs
+        "object_list": qs
     }
 
-    return render(request,"feed/index.html", context)
-
+    return render(request, "feed/index.html", context)
 
 
 class SearchItemType(generic.ListView):
@@ -56,6 +56,18 @@ class SearchItemType(generic.ListView):
 class ReportCreate(generic.CreateView):
     model = Report_item
     fields = ['title', 'item_type', 'location', 'city', 'image', 'Description']
+
+    def get_form(self,form_class=None):
+        if form_class is None:
+            form_class = self.get_form_class()
+        form = super(ReportCreate, self).get_form(form_class)
+        form.fields['title'].widget = TextInput(attrs={'placeholder': 'Enter UID e.g. CBSE Marksheet Roll nunber 0506***'})
+        form.fields['item_type'].widget = TextInput(attrs={'placeholder': 'What do you found e.g. marksheet,passport,key,wallet'})
+        form.fields['location'].widget = TextInput(attrs={'placeholder': 'Enter street/address where you found this item'})
+        form.fields['city'].widget = TextInput(attrs={'placeholder': 'Enter city name e.g. New Delhi, Hyderabad'})
+        form.fields['Description'].widget = Textarea(attrs={'rows':4, 'cols':15,'placeholder': 'Optional Field: Any other related detail'})
+
+        return form
 
     def form_valid(self, form):
         self.object = form.save(commit=False)

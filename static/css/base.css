@@ -245,3 +245,10 @@ margin: 0 auto;
 .pagination table{
  margin:0 auto;
 }
+
+
+input::-webkit-input-placeholder {
+    font-size: 10px;
+
+
+}

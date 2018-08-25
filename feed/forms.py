@@ -15,3 +15,10 @@ class LoginForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('email','password1')
+
+
+
+class ReportForm(forms.ModelForm):
+    class Meta:
+        model = Report_item
+        fields = ('title', 'item_type', 'location', 'city', 'image', 'Description')
