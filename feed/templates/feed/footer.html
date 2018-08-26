@@ -60,5 +60,16 @@ function googleTranslateElementInit() {
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
+<script type="text/javascript">
+    function ActivatePlacesSearch(){
+        var input=document.getElementById('id_location');
+        var autocomplete=new google.maps.places.Autocomplete(input);
+    }
+
+
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&libraries=places&callback=ActivatePlacesSearch">
+
+</script>
 </body>
 </html>

@@ -3,7 +3,7 @@ from django.forms import Textarea, forms,TextInput,ImageField
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.edit import FormMixin
-
+from decouple import config
 from .models import Report_item, ClaimForm, UserNotification, ContactHelp
 from django.views import generic
 from django.contrib.auth import login, authenticate
@@ -11,11 +11,9 @@ from django.shortcuts import render, redirect
 from django.views.generic import View, UpdateView, DeleteView
 from .forms import SignUpForm, LoginForm, ReportForm
 from django.contrib.auth import logout
-
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse_lazy
 from django.db.models import Q
-
 
 def IndexView(request):
     query_list = Report_item.objects.filter(publish=True)
@@ -23,7 +21,6 @@ def IndexView(request):
     if query:
         query_list = query_list.filter(Q(title__icontains=query) |
                                        Q(item_type__icontains=query) |
-                                       Q(city__icontains=query) |
                                        Q(location__icontains=query) |
                                        Q(Description__icontains=query)).distinct()
 
@@ -55,16 +52,15 @@ class SearchItemType(generic.ListView):
 
 class ReportCreate(generic.CreateView):
     model = Report_item
-    fields = ['title', 'item_type', 'location', 'city', 'image', 'Description']
+    fields = ['title', 'item_type', 'location', 'image', 'Description']
 
     def get_form(self,form_class=None):
         if form_class is None:
             form_class = self.get_form_class()
         form = super(ReportCreate, self).get_form(form_class)
-        form.fields['title'].widget = TextInput(attrs={'placeholder': 'Enter UID e.g. CBSE Marksheet Roll nunber 0506***'})
-        form.fields['item_type'].widget = TextInput(attrs={'placeholder': 'What do you found e.g. marksheet,passport,key,wallet'})
-        form.fields['location'].widget = TextInput(attrs={'placeholder': 'Enter street/address where you found this item'})
-        form.fields['city'].widget = TextInput(attrs={'placeholder': 'Enter city name e.g. New Delhi, Hyderabad'})
+        form.fields['title'].widget = TextInput(attrs={'placeholder': '*Enter UID e.g. CBSE Marksheet Roll nunber 0506***'})
+        form.fields['item_type'].widget = TextInput(attrs={'placeholder': '*What do you found e.g. marksheet,passport,key,wallet'})
+        form.fields['location'].widget = TextInput(attrs={'placeholder': '*Enter street and city name where you found this item'})
         form.fields['Description'].widget = Textarea(attrs={'rows':4, 'cols':15,'placeholder': 'Optional Field: Any other related detail'})
 
         return form
@@ -157,7 +153,7 @@ def Profile(request, username):
 
 class ReportUpdate(UpdateView):
     model = Report_item
-    fields = ['title', 'item_type', 'location', 'city', 'image', 'Description']
+    fields = ['title', 'item_type', 'location', 'image', 'Description']
 
 
 class ReportDelete(DeleteView):
@@ -176,7 +172,7 @@ class RequestItem(generic.CreateView):
         qs = Report_item.objects.filter(id=self.kwargs.get("pk"))
         self.object.user = qs[0].owner
         self.object.save()
-        return HttpResponse("<h1>Tour request has been processed</h1>")
+        return HttpResponse("<h1>Your request has been processed</h1>")
 
 
 def show_notification(request, notification_id):
@@ -193,7 +189,7 @@ def read_notification(request, notification_id):
     n = UserNotification.objects.get(id=notification_id)
     n.viewed = True
     n.save()
-    return HttpResponse("<h1>Tour request has been processed</h1>")
+    return HttpResponse("<h1>Your request has been processed</h1>")
 
 
 def mynotification(request):
@@ -231,4 +227,10 @@ def notification_context(request):
     return {
         'notification': n,
         'count': n.count(),
+    }
+
+def api_context(request):
+    key=config('api_key')
+    return {
+        'api_key':key,
     }

@@ -21,4 +21,4 @@ class LoginForm(UserCreationForm):
 class ReportForm(forms.ModelForm):
     class Meta:
         model = Report_item
-        fields = ('title', 'item_type', 'location', 'city', 'image', 'Description')
+        fields = ('title', 'item_type', 'location', 'image', 'Description')

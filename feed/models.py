@@ -17,8 +17,7 @@ class Report_item(models.Model):
     title = models.CharField(max_length=255, help_text='*Title for the post e.g. item identity')
     item_type = models.CharField(default="", max_length=100,
                                  help_text='*Enter the item name you found e.g. Marksheet,key,wallet')
-    location = models.CharField(max_length=60, help_text='*Enter the address/street where you find this item')
-    city = models.CharField(max_length=60, help_text='*Enter the city name')
+    location = models.CharField(max_length=255, help_text='*Enter the address and city where you found this item')
     date = models.DateTimeField(default=timezone.now)
     Description = models.TextField(blank=True,null=True,help_text='*Enter full description about item')
     publish = models.BooleanField(default=False)

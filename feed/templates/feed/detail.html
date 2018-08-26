@@ -9,7 +9,6 @@
           <table class="mytable table-responsive">
                 <tr><td class="my-td-item">Title</td><td>{{ object.title }}</td></tr>
                 <tr><td class="my-td-item">Location</td><td>{{ object.location }}</td></tr>
-                <tr><td class="my-td-item">City</td><td>{{ object.city }}</td></tr>
                 <tr><td class="my-td-item">Date</td><td>{{ object.date }}</td></tr>
                 <tr><td class="my-td-item">Description</td><td>{{ object.Description }}</td></tr>
                 <tr><td class="my-td-item">Image</td><td>{% if object.image%}<img class="img-responsive" src="{{ object.image.url }}" alt="backmyitem" width="300" height="200"> {% endif %}</td></tr>

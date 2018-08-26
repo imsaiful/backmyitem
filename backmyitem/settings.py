@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'feed.views.notification_context',
+                'feed.views.api_context',
             ],
 
         },
