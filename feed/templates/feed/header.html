@@ -4,7 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Back My Item</title>
+    <style>
+    @media only screen and (max-width: 992px) {
+    nav , .navbar , .navbar-fixed-top ,navbar-header , #mynav{
+        display:none!important;
 
+    }
+    }
+     @media only screen and (min-width: 992px) {
+            .mobile-header{
+                display:none!important;
+
+            }
+    }
+    .mob-header{
+    background-color:#AA2200;
+ margin-top:-70px;
+  font-size: 36px;
+            color:white;
+
+            font-weight: 900;
+
+    }
+    .mobile-header{
+        text-align:center;
+                 font-weight: 600;
+                  color:#000000;
+
+                    margin-top:-15px;
+
+
+    }
+
+    </style>
     <meta charset="utf-8">
     <link rel="stylesheet" href='{% static "css/base.css" %}'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +44,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top ">
     <div class="container">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -88,3 +120,29 @@
   </div>
         </div>
 </nav>
+
+<div class="mobile-header headerrow">
+    <div class="col-md-12 mob-header" style="text-align:center;">
+    BackMyItem
+    </div>
+</div>
+<table class="mobile-header table mytable table-reponsive mob-header-table">
+    <tr>
+        <td class="mobile-header-td"><a href="{% url 'feed:index' %}"><span class="glyphicon glyphicon-home"></span>&nbsp Home</a></td>
+        <td class="mobile-header-td"><a href="{% url 'feed:report' %}"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Report</a></td>
+        {% if not user.is_authenticated %}
+                <td class="mobile-header-td"><span class="glyphicon glyphicon-bullhorn">&nbsp;</span>Notifs</a></td>
+
+        {% else %}
+        <td class="mobile-header-td"><a href="{% url 'feed:readnotification' %}"><span class="glyphicon glyphicon-bullhorn">&nbsp;</span>Notifs<small>(<b>{{ count }}</b>)</small></a></td>
+
+         {% endif %}
+        {% if not user.is_authenticated %}
+        <td class="mobile-header-td"> <a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></td>
+        {% else %}
+        <td class="mobile-header-td"><a href="{% url 'feed:profile' user.username %}"><span class="glyphicon glyphicon-user"></span>&nbsp;{{ user.username }}</a></td>
+        {% endif %}
+    </tr>
+
+</table>
+

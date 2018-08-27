@@ -138,7 +138,7 @@ class LoginForm(generic.CreateView):
 
 def logout_view(request):
     logout(request)
-    query_list = Report_item.objects.all()
+    query_list = Report_item.objects.filter(publish=True)
     return render(request, "feed/index.html", {'object_list': query_list})
 
 
