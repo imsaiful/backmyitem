@@ -252,3 +252,13 @@ input::-webkit-input-placeholder {
 
 
 }
+
+
+.ui-menu-item{
+background-color:#E0E0E0!important;
+color: #000000!important;
+width:150px;
+list-style-type: none;
+ border-bottom:1px solid black;
+
+}

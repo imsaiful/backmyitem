@@ -40,10 +40,35 @@
 </div>
 </footer>
 <br>
-
-
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    var category = [
+      "Marksheet",
+      "Passport",
+      "Key",
+      "PAN Card",
+      "ATM Card",
+      "Documents",
+      "Wallet",
+      "Purse",
+      "Bag",
+      "Mobile",
+      "Laptop",
+      "Pendrive",
+      "Electronic Gadgets",
+      "others",
+    ];
+    $( "#id_item_type" ).autocomplete({
+      source: category
+    });
+  } );
+  </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
