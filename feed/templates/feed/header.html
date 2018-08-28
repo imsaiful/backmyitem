@@ -20,7 +20,7 @@
     .mob-header{
     background-color:#AA2200;
 
-  font-size: 36px;
+  font-size: 24px;
             color:white;
 
             font-weight: 900;
@@ -33,10 +33,11 @@
     }
     .mob-header-table , .mob-header-table a:hover{
         text-align:center;
+        font-size: 12px;
         font-weight: 600;
         background-color:#E0E0E0;
         color:#000000;text-decoration: none;
-        height:50%;
+
     }
 
     .mobile-header a,.mobile-header a:hover{
@@ -51,8 +52,13 @@
   left: 0;
   z-index: 999;
   width: 100%;
-
     }
+    .mobile-header-table{
+           border-collapse: separate;
+            border-spacing: 2px 0px;
+            border: 0px !important;
+
+        }
 
     </style>
     <meta charset="utf-8">
@@ -129,7 +135,7 @@
         <a href="{% url 'feed:index' %}">BackMyItem</a>
     </div>
 </div>
-<table class="table mytable table-reponsive mob-header-table">
+<table class="table mobile-header-table table-reponsive mob-header-table">
     <tr>
         <td class="mobile-header-td"><a href="{% url 'feed:index' %}"><span class="glyphicon glyphicon-home"></span>&nbsp Home</a></td>
         <td class="mobile-header-td"><a href="{% url 'feed:report' %}"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Report</a></td>
@@ -150,4 +156,4 @@
 </table>
 
 </div>
-<br><br><br><br>
+<br>
