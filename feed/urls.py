@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^about/$', views.home_page, name='about'),
     url(r'^contact/$', views.Contact_page.as_view(), name='contact'),
     url(r'^team/$', views.TeamPage , name='team'),
+    url(r'^privacy/$', views.privacy_page, name='privacy'),
 
 
 ]

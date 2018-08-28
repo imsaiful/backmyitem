@@ -210,6 +210,10 @@ def home_page(request):
     return render(request, "static_page/about_us.html", {})
 
 
+def privacy_page(request):
+    return render(request, "static_page/privacy.html", {})
+
+
 class Contact_page(generic.CreateView):
     model = ContactHelp
     fields = ['Name', 'Email', 'query']

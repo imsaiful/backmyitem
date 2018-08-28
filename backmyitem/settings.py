@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'feed',
     'storages',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -66,12 +67,22 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'feed.views.notification_context',
                 'feed.views.api_context',
+                'social_django.context_processors.backends',  # <- Here
+                'social_django.context_processors.login_redirect',
             ],
 
         },
     },
 
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
+    'social_core.backends.google.GoogleOpenId',  # for Google authentication
+    'social_core.backends.google.GoogleOAuth2',  # for Google authentication
+    'social_core.backends.facebook.FacebookOAuth2',  # for Facebook authentication
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 WSGI_APPLICATION = 'backmyitem.wsgi.application'
 
@@ -128,7 +139,10 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY =config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
+SOCIAL_AUTH_FACEBOOK_KEY = config('SOCIAL_AUTH_FACEBOOK_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET =config('SOCIAL_AUTH_FACEBOOK_SECRET')
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, "..", "static")
@@ -158,4 +172,7 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
 DEFAULT_FILE_STORAGE = config('DEFAULT_FILE_STORAGE')
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/report'
 
