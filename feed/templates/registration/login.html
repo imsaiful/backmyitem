@@ -10,8 +10,8 @@
     <div class="col-md-4">
         <div class="thumbnail">
            <div class="logo">
- <p>BackMyItem</p>
-</div>
+    <p>BackMyItem</p>
+    </div>
         <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
               {% if form.errors %}
@@ -28,12 +28,7 @@
 
                 </div>
             <br><br>
-            <div id="gmail-login-id">
-                <p><a href="{% url 'social:begin' 'google-oauth2' %}">Continue With Google</a> </p>
-            </div>
-             <div id="fb-login-id">
-                <p><a href="{% url 'social:begin' 'facebook' %}">Continue With Facebook</a> </p>
-            </div>
+            {% include "feed/social-login.html" %}
             <br><br>
             <div class="row"><div class="col-md-12"><a href="{% url 'password_reset_reset1'%}" class="pull-right">>>Reset Password</a></div></div>
 
