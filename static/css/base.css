@@ -267,7 +267,7 @@ list-style-type: none;
 
          background-color:#AA2200;
          text-align:center;
-         border-radius: 25px;
+         border-radius: 15px;
          color:white;
          font-size:20px;
          font-weight: 600;
@@ -291,7 +291,7 @@ list-style-type: none;
          color:white;
          font-size:20px;
          font-weight: 600;
-        border-radius: 25px;
+        border-radius: 15px;
 
     }
 
@@ -349,8 +349,10 @@ list-style-type: none;
   z-index: 999;
   width: 100%;
     }
-    .mobile-header-table{
-           border-collapse: separate;
+
+
+  .mobile-header-table{
+    border-collapse: separate;
             border-spacing: 2px 0px;
             border: 0px !important;
 

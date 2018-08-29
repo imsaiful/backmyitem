@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 from decouple import config
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -27,7 +28,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['127.0.0.1','backmyitem.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'backmyitem.com']
 
 # Application definition
 
@@ -139,19 +140,16 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY =config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 SOCIAL_AUTH_FACEBOOK_KEY = config('SOCIAL_AUTH_FACEBOOK_KEY')
-SOCIAL_AUTH_FACEBOOK_SECRET =config('SOCIAL_AUTH_FACEBOOK_SECRET')
-
+SOCIAL_AUTH_FACEBOOK_SECRET = config('SOCIAL_AUTH_FACEBOOK_SECRET')
 
 STATIC_ROOT = os.path.join(BASE_DIR, "..", "static")
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "..", "media")
 MEDIA_URL = '/media/'
-
-
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
@@ -175,4 +173,3 @@ DEFAULT_FILE_STORAGE = config('DEFAULT_FILE_STORAGE')
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/report'
-
