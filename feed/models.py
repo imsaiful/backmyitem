@@ -7,9 +7,12 @@ from django.conf import settings
 from django.core.validators import MaxValueValidator
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
+
+def get_uplaod_file_name(userpic, filename):
+    return u'photos/%s/%s_%s' % (str(userpic.owner.username),
+                                 str(timezone.now()).replace('.', '_'),
+                                 filename)
 
 
 class Report_item(models.Model):
@@ -19,11 +22,11 @@ class Report_item(models.Model):
                                  help_text='*Enter the item name you found e.g. Marksheet,key,wallet')
     location = models.CharField(max_length=255, help_text='*Enter the address and city where you found this item')
     date = models.DateTimeField(default=timezone.now)
-    Description = models.TextField(blank=True,null=True,help_text='*Enter full description about item')
+    Description = models.TextField(blank=True, null=True, help_text='*Enter full description about item')
     publish = models.BooleanField(default=False)
 
     image = models.ImageField(default="add Item image",
-                             help_text='*Please uplocad a item image to identify by the owner')
+                              upload_to=get_uplaod_file_name)
 
     def __str__(self):
         return self.title + "      " + str(self.publish)
@@ -40,12 +43,8 @@ class ClaimForm(models.Model):
     Your_mobile_number = models.CharField(max_length=10, validators=[RegexValidator(r'^\d{1,10}$')])
     Detail_proof = models.TextField()
 
-
     def __str__(self):
         return self.Your_name + " " + self.Detail_of_proof
-
-
-
 
 
 class UserNotification(models.Model):
@@ -65,17 +64,11 @@ class UserNotification(models.Model):
 
 class ContactHelp(models.Model):
     Name = models.CharField(max_length=250)
-    Email=models.EmailField(blank=False,null=False)
-    query=models.TextField(blank=False,null=False)
-    date=models.DateTimeField(default=timezone.now)
+    Email = models.EmailField(blank=False, null=False)
+    query = models.TextField(blank=False, null=False)
+    date = models.DateTimeField(default=timezone.now)
+
     def __str__(self):
         return self.query
-
-
-
-
-
-
-
 
 # Create your models here.
