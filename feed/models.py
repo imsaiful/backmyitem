@@ -9,8 +9,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-def get_uplaod_file_name(userpic, filename):
-    return u'photos/%s/%s_%s' % (str(userpic.owner.username),
+def get_uplaod_file_name(image, filename):
+    return u'photos/%s/%s_%s' % (str(image.owner),
                                  str(timezone.now()).replace('.', '_'),
                                  filename)
 

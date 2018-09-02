@@ -1,5 +1,5 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.forms import Textarea, forms,TextInput,ImageField
+from django.forms import Textarea, forms, TextInput, ImageField
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.edit import FormMixin
@@ -14,6 +14,7 @@ from django.contrib.auth import logout
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse_lazy
 from django.db.models import Q
+
 
 def IndexView(request):
     query_list = Report_item.objects.filter(publish=True)
@@ -54,14 +55,18 @@ class ReportCreate(generic.CreateView):
     model = Report_item
     fields = ['title', 'item_type', 'location', 'image', 'Description']
 
-    def get_form(self,form_class=None):
+    def get_form(self, form_class=None):
         if form_class is None:
             form_class = self.get_form_class()
         form = super(ReportCreate, self).get_form(form_class)
-        form.fields['title'].widget = TextInput(attrs={'placeholder': '*Enter UID e.g. CBSE Marksheet Roll nunber 0506***'})
-        form.fields['item_type'].widget = TextInput(attrs={'placeholder': '*What do you found e.g. marksheet,passport,key,wallet'})
-        form.fields['location'].widget = TextInput(attrs={'placeholder': '*Enter street and city name where you found this item'})
-        form.fields['Description'].widget = Textarea(attrs={'rows':4, 'cols':15,'placeholder': 'Optional Field: Any other related detail'})
+        form.fields['title'].widget = TextInput(
+            attrs={'placeholder': '*Enter UID e.g. CBSE Marksheet Roll nunber 0506***'})
+        form.fields['item_type'].widget = TextInput(
+            attrs={'placeholder': '*What do you found e.g. marksheet,passport,key,wallet'})
+        form.fields['location'].widget = TextInput(
+            attrs={'placeholder': '*Enter street and city name where you found this item'})
+        form.fields['Description'].widget = Textarea(
+            attrs={'rows': 4, 'cols': 15, 'placeholder': 'Optional Field: Any other related detail'})
 
         return form
 
@@ -165,6 +170,16 @@ class RequestItem(generic.CreateView):
     model = UserNotification
     fields = ['Name', 'Mobile_No', 'Proof']
 
+    def get_form(self, form_class=None):
+        if form_class is None:
+            form_class = self.get_form_class()
+        form = super().get_form(form_class)
+        form.fields['Name'].widget = TextInput(attrs={'placeholder': '*Enter your name'})
+        form.fields['Mobile_No'].widget = TextInput(
+            attrs={'placeholder': "*Enter your's mobile number to get a call back from angel"})
+        form.fields['Proof'].widget = TextInput(attrs={'placeholder': '*enter proof you have for your lost item'})
+        return form
+
     def form_valid(self, form):
         print(self.kwargs)
 
@@ -233,8 +248,9 @@ def notification_context(request):
         'count': n.count(),
     }
 
+
 def api_context(request):
-    key=config('api_key')
+    key = config('api_key')
     return {
-        'api_key':key,
+        'api_key': key,
     }

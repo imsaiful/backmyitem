@@ -27,6 +27,7 @@
     .profile-btn-div{
     margin-left:5%;
     margin-top:5%;
+
     }
     .signup-thumbnail{
         padding-right:5%;
@@ -119,15 +120,7 @@
         padding-right:5%;
         padding-left:5%;
         }
-input[type=text],input[type=email],input[type=number] , input[type=password], select, textarea {
-  width: 100%;
-  padding: 1px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  padding: 8px 15px;
-    margin: 8px 0;
-}
+
 
 label {
     padding: 2px 2px 2px 0;
