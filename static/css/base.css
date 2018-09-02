@@ -263,6 +263,10 @@ list-style-type: none;
 
 }
 
+  .static-page {
+        text-align:justify;
+        }
+
 #gmail-login-id{
 
          background-color:#AA2200;
