@@ -14,7 +14,9 @@ from django.contrib.auth import logout
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse_lazy
 from django.db.models import Q
-
+from datetime import datetime
+import schedule
+import time
 
 def IndexView(request):
     query_list = Report_item.objects.filter(publish=True)
@@ -187,7 +189,8 @@ class RequestItem(generic.CreateView):
         qs = Report_item.objects.filter(id=self.kwargs.get("pk"))
         self.object.user = qs[0].owner
         self.object.save()
-        return HttpResponse("<h1>Your request has been processed</h1>")
+        query_list = Report_item.objects.filter(publish=True)
+        return render(self.request,"feed/index.html",{"object_list":query_list})
 
 
 def show_notification(request, notification_id):
@@ -254,3 +257,5 @@ def api_context(request):
     return {
         'api_key': key,
     }
+
+

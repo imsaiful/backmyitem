@@ -7,6 +7,7 @@ from django.conf import settings
 from django.core.validators import MaxValueValidator
 from django.db import models
 from django.contrib.auth.models import User
+from PIL import Image
 
 
 def get_uplaod_file_name(image, filename):
@@ -27,6 +28,7 @@ class Report_item(models.Model):
 
     image = models.ImageField(default="add Item image",
                               upload_to=get_uplaod_file_name)
+
 
     def __str__(self):
         return self.title + "      " + str(self.publish)

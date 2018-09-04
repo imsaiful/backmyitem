@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 from decouple import config
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -153,9 +154,14 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "..", "media")
 MEDIA_URL = '/media/'
 
+
+
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
@@ -175,3 +181,15 @@ DEFAULT_FILE_STORAGE = config('DEFAULT_FILE_STORAGE')
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'
+
+DJANGO_IMAGE_TOOLS_FILTERS = {
+    'grey_scaled': {
+        'filter_type': 'GREYSCALE'
+    },
+
+    'blurred': {
+        'filter_type': 'GAUSSIAN_BLUR',
+        'value': 5
+    }
+}
+
