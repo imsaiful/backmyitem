@@ -182,14 +182,3 @@ DEFAULT_FILE_STORAGE = config('DEFAULT_FILE_STORAGE')
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'
 
-DJANGO_IMAGE_TOOLS_FILTERS = {
-    'grey_scaled': {
-        'filter_type': 'GREYSCALE'
-    },
-
-    'blurred': {
-        'filter_type': 'GAUSSIAN_BLUR',
-        'value': 5
-    }
-}
-

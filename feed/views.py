@@ -14,9 +14,7 @@ from django.contrib.auth import logout
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse_lazy
 from django.db.models import Q
-from datetime import datetime
-import schedule
-import time
+
 
 def IndexView(request):
     query_list = Report_item.objects.filter(publish=True)
