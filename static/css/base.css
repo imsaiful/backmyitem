@@ -250,7 +250,7 @@ input::-webkit-input-placeholder {
 
 color: #000000!important;
 list-style-type: none;
- border-bottom:1px solid black;
+
 
 }
 
@@ -357,6 +357,7 @@ list-style-type: none;
     .ui-menu-item {
     width:100% !important;
     background:white !important;
+     border-bottom:1px solid #EEEEEE!important;
     }
 
 #id_image{
