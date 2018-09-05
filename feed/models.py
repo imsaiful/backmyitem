@@ -13,7 +13,6 @@ from io import BytesIO
 import sys
 
 
-
 def get_uplaod_file_name(image, filename):
     return u'photos/%s/%s_%s' % (str(image.owner),
                                  str(timezone.now()).replace('.', '_'),
@@ -40,18 +39,18 @@ class Report_item(models.Model):
         output = BytesIO()
 
         # Resize/modify the image
-        im = im.resize((100, 100))
+        im = im.resize((500, 500))
 
         # after modifications, save it to the output
-        im.save(output, format='JPEG', quality=90)
+
+        im.save(output, format='JPEG', optimize=True, quality=95)
         output.seek(0)
 
         # change the imagefield value to be the newley modifed image value
         self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg',
-                                        sys.getsizeof(output), None)
+                                          sys.getsizeof(output), None)
 
         super(Report_item, self).save()
-
 
     def __str__(self):
         return self.title + "      " + str(self.publish)
