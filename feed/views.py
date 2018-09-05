@@ -1,4 +1,6 @@
+from django.contrib.auth.models import User
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.core.validators import validate_email
 from django.forms import Textarea, forms, TextInput, ImageField
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
@@ -14,6 +16,7 @@ from django.contrib.auth import logout
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse_lazy
 from django.db.models import Q
+from PIL import Image
 
 
 def IndexView(request):
@@ -125,18 +128,31 @@ class LoginForm(generic.CreateView):
         form = self.form_class(None)
         return render(request, self.template_name, {'form': form})
 
-    def post(self, request):
+    def Post(self, request):
         form = self.form_class(request.POST)
         if form.is_valid():
-            UserModel = get_user_model()
-            email = request.POST['email']
-            password = request.POST['password']
-            username = UserModel.objects.get(email=email)
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return redirect('')
+            try:
+                print("try")
+                username = request.POST['username']
+                username = User.objects.get(email=username).username  # Get username with email
+                password = request.POST['password']
+                validate_email(username)  # If it's a valid email
+                user = authenticate(request, username=username, password=password)
+                if user is not None:
+                    if user.is_active:
+                        login(request, user)
+                        return redirect('')
+
+            except:
+                print("except")
+                UserModel = get_user_model()
+
+                password = request.POST['password']
+                user = authenticate(request, username=username, password=password)
+                if user is not None:
+                    if user.is_active:
+                        login(request, user)
+                        return redirect('')
         else:
             print(form.errors)
 
@@ -188,7 +204,7 @@ class RequestItem(generic.CreateView):
         self.object.user = qs[0].owner
         self.object.save()
         query_list = Report_item.objects.filter(publish=True)
-        return render(self.request,"feed/index.html",{"object_list":query_list})
+        return render(self.request, "feed/index.html", {"object_list": query_list})
 
 
 def show_notification(request, notification_id):
@@ -255,5 +271,3 @@ def api_context(request):
     return {
         'api_key': key,
     }
-
-

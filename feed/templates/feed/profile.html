@@ -15,9 +15,11 @@
           <div class="row">
               <div class="col-md-9">
                   <table class="mytable table-responsive">
+
                         <tr><td class="my-td-item">Title</td><td>{{ obj.title }}</td></tr>
                         <tr><td class="my-td-item">Item Type</td><td>{{ obj.item_type }}</td></tr>
                         <tr><td class="my-td-item">Location</td><td>{{ obj.location }}</td></tr>
+                        <tr><td colspan="2"><p><b>{% if obj.publish is False%}Your Post is in review{% endif %}</b></p></td></tr>
                   </table>
               </div>
               <div class="col-md-3">
