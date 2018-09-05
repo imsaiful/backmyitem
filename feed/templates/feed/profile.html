@@ -3,7 +3,7 @@
 <div class="container">
 <div class="row">
       <div class="col-md-6 col-md-push-3">
-          <div class="thumbnail-center">
+          <div class="thumbnail-center-profile">
             <font size="2" style="color:black;">
             <p>Hello &nbsp;{{ user.first_name }}&nbsp Thanks to make the world a better place</p><br>
                 <p>Your's content</p>
@@ -19,7 +19,7 @@
                         <tr><td class="my-td-item">Title</td><td>{{ obj.title }}</td></tr>
                         <tr><td class="my-td-item">Item Type</td><td>{{ obj.item_type }}</td></tr>
                         <tr><td class="my-td-item">Location</td><td>{{ obj.location }}</td></tr>
-                        <tr><td colspan="2"><p><b>{% if obj.publish is False%}Your Post is in review{% endif %}</b></p></td></tr>
+                        <tr><td colspan="2" class="post-review"><p><b>{% if obj.publish is False%}Your Post is in review{% endif %}</b></p></td></tr>
                   </table>
               </div>
               <div class="col-md-3">

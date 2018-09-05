@@ -39,6 +39,14 @@
      font-weight:bold;
      color:#BDBDBD;
     }
+
+    .thumbnail-center-profile{
+     text-align:center;
+     margin-top:2%;
+     margin-bottom:2%;
+     font-weight:bold;
+     color:#BDBDBD;
+    }
     .logo {
     padding-left:20%;
     padding-right:15%;
@@ -207,6 +215,11 @@ color:#AA2200!important;
                font-size: 30px !important;
                 text-align:center;
 }
+
+.post-review{
+color:#AA2200!important;;
+}
+
 
 footer a:hover{
                text-height: 36px;
