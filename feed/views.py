@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.edit import FormMixin
 from decouple import config
-from .models import Report_item, ClaimForm, UserNotification, ContactHelp
+from .models import Report_item, UserNotification, ContactHelp
 from django.views import generic
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
@@ -85,9 +85,6 @@ class ReportDetail(generic.DetailView):
     template_name = 'feed/detail.html'
 
 
-class ClaimForm(generic.CreateView):
-    model = ClaimForm
-    fields = ['Your_name', 'Your_mobile_number', 'Detail_proof']
 
 
 class SignUpForm(generic.CreateView):

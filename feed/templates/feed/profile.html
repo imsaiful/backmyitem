@@ -42,19 +42,7 @@
 
       </div>
       {% endfor %}
-          <div class="row">
-            <table class="table mytable table-reponsive mob-header-table">
-    <tr>
-        <td class="mobile-header-td"><a href="{% url 'feed:index' %}"><span class="glyphicon glyphicon-home"></span>&nbsp Home</a></td>
-        <td class="mobile-header-td"><a href="{% url 'feed:report' %}"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Report</a></td>
 
-        <td class="mobile-header-td"><a href="{% url 'feed:readnotification' %}"><span class="glyphicon glyphicon-bullhorn">&nbsp;</span>Notifs<small>(<b>{{ count }}</b>)</small></a></td>
-        <td class="mobile-header-td"><a href="{% url 'feed:logout' %}"><span class="glyphicon glyphicon-log-out"></span>&nbsp;logout</a></td>
-    </tr>
-
-</table>
-
-          </div>
   </div>
 
   <div class="col-md-3 col-md-pull-6">
