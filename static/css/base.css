@@ -54,8 +54,9 @@
     text-align: center;
     color:#AA2200;
      font-weight: bold;
-     font-style: italic;
       font-size: 40px;
+       font-family: "Times New Roman", Times, serif;
+ word-spacing: 3px;
     }
       .logo{
         width:15%;
@@ -267,9 +268,31 @@ list-style-type: none;
 
 }
 
-  .static-page {
-        text-align:justify;
-        }
+.static-page p{
+        margin: 2%!important;
+        text-align: justify;
+    }
+        input[type=text],input[type=email],input[type=number] , input[type=password], select, textarea {
+  width: 100%;
+  padding: 1px;
+
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  padding: 8px 15px;
+    margin: 8px 0;
+}
+td h5 {
+ font-family: "Times New Roman", Times, serif;
+ word-spacing: 3px;
+ line-height: 1.6;
+
+ text-align: justify;
+}
+.signupfield{
+
+padding-left:2%;
+}
 
 #gmail-login-id{
 

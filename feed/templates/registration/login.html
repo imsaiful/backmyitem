@@ -1,17 +1,16 @@
 {% extends "feed/base.html" %}
-
-
+{% block title %} Login to BackMyItem{% endblock %}
 {% block content %}
-
 <div class="row">
     <div class="col-md-4">
 
     </div>
     <div class="col-md-4">
         <div class="thumbnail">
-           <div class="logo">
-    <p>BackMyItem</p>
-    </div>
+             <div class="thumbnail-center">
+                  <p>Login to become someone's happiness</a></p>
+       </div>
+
         <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
               {% if form.errors %}

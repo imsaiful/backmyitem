@@ -1,5 +1,9 @@
 {% extends 'feed/base.html'%}
+{% block title %} {{ object.title }} {% endblock %}
+
+
 {% block content %}
+
 <div class="container">
 <div class="row">
   <div class="col-md-3">
@@ -7,11 +11,11 @@
   <div class="col-md-6">
       <div class="thumbnail">
           <table class="mytable table-responsive">
-                <tr><td class="my-td-item">Title</td><td>{{ object.title }}</td></tr>
-                <tr><td class="my-td-item">Location</td><td>{{ object.location }}</td></tr>
-                <tr><td class="my-td-item">Date</td><td>{{ object.date }}</td></tr>
-                <tr><td class="my-td-item">Description</td><td>{{ object.Description }}</td></tr>
-                <tr><td class="my-td-item">Image</td><td>{% if object.image%}<img class="img-responsive" src="{{ object.image.url }}" alt="backmyitem" width="300" height="200"> {% endif %}</td></tr>
+              <tr><td class="my-td-item"><h5><b>Title</b></h5></td><td><h5>{{ object.title }}</h5></td></tr>
+              <tr><td class="my-td-item"><h5><b>Location</b></h5></td><td><h5>{{ object.location }}</h5></td></tr>
+              <tr><td class="my-td-item"><h5><b>Date</b></h5></td><td><h5>{{ object.date }}</h5></td></tr>
+              <tr><td class="my-td-item"><h5><b>Description</b></h5></td><td><h5 style="font-style:times">{{ object.Description }}</h5></td></tr>
+                <tr><td class="my-td-item"><b>Image</b></td><td>{% if object.image%}<img class="img-responsive" src="{{ object.image.url }}" alt="backmyitem" width="300" height="200"> {% endif %}</td></tr>
 
           </table>
            <div class="row" >

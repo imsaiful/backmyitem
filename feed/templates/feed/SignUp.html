@@ -1,4 +1,6 @@
 {% extends 'feed/base.html'%}
+{% block title %} {{ title }} {% endblock %}
+
 {% block content %}
 {% if user.is_authenticated %}
 <p>You are logged in</p>

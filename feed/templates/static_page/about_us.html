@@ -1,5 +1,5 @@
 {% extends "feed/base.html" %}
-
+{% block title %} {{ title }} {% endblock %}
 {% block content %}
 <div class="static-page row">
     <div class="col-md-3">
@@ -46,7 +46,7 @@ First, you need to create your account on our platform. After signing, if you fi
         <hr>
          <div class="thumbnail-center">
             <font size="4">
-                <p><a href="{% url 'feed:signup'%}">Sign Up to become someone's Happiness</a></p>
+                <h4><b><a href="{% url 'feed:signup'%}">Sign Up to become someone's Happiness</a></b></h4>
             </font>
         </div>
     </div>

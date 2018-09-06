@@ -1,4 +1,6 @@
 {% extends "feed/base.html" %}
+{% block title %} {{ title }} {% endblock %}
+
 {% block content %}
 <div class="container">
 <div class="row">
@@ -16,9 +18,10 @@
               <div class="col-md-9">
                   <table class="mytable table-responsive">
 
-                        <tr><td class="my-td-item">Title</td><td>{{ obj.title }}</td></tr>
-                        <tr><td class="my-td-item">Item Type</td><td>{{ obj.item_type }}</td></tr>
-                        <tr><td class="my-td-item">Location</td><td>{{ obj.location }}</td></tr>
+                        <tr><td class="my-td-item"><h5><b>Title</b></h5></td><td><h5>{{ obj.title }}</h5></td></tr>
+                      <tr><td class="my-td-item"><h5><b>Item Type</b></h5></td><td><h5>{{ obj.item_type }}</h5></td></tr>
+                      <tr><td class="my-td-item"><h5><b>Location</b></h5></td><td><h5>{{ obj.location }}</h5></td></tr>
+
                         <tr><td colspan="2" class="post-review"><p><b>{% if obj.publish is False%}Your Post is in review{% endif %}</b></p></td></tr>
                   </table>
               </div>

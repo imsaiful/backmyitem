@@ -36,6 +36,7 @@ def IndexView(request):
         qs = paginator.page(1)
     except EmptyPage:
         qs = paginator.page(paginator.num_pages)
+    title = "Home-Back My Item"
     context = {
         "object_list": qs
     }
@@ -85,15 +86,18 @@ class ReportDetail(generic.DetailView):
     template_name = 'feed/detail.html'
 
 
-
-
 class SignUpForm(generic.CreateView):
     form_class = SignUpForm
     template_name = "feed/SignUp.html"
 
     def get(self, request):
+        title = "SignUp - BackMyItem"
         form = self.form_class(None)
-        return render(request, self.template_name, {'form': form})
+        context = {
+            "title": title,
+            "form": form,
+        }
+        return render(request, self.template_name, context)
 
     def post(self, request):
 
@@ -122,8 +126,14 @@ class LoginForm(generic.CreateView):
     template_name = "feed/SignUp.html"
 
     def get(self, request):
+        title = "Login to BackMyItem"
         form = self.form_class(None)
-        return render(request, self.template_name, {'form': form})
+        context = {
+            "title": title,
+            "form": form,
+
+        }
+        return render(request, self.template_name, context)
 
     def Post(self, request):
         form = self.form_class(request.POST)
@@ -162,9 +172,11 @@ def logout_view(request):
 
 def Profile(request, username):
     print(username)
+    title = username + " - BackMyItem"
     qs = Report_item.objects.filter(owner__username=username)
     context = {
         "object_list": qs,
+        "title": title,
     }
     return render(request, "feed/profile.html", context)
 
@@ -200,16 +212,19 @@ class RequestItem(generic.CreateView):
         qs = Report_item.objects.filter(id=self.kwargs.get("pk"))
         self.object.user = qs[0].owner
         self.object.save()
-        return HttpResponse("<p>Your request has been proceed.</p><br><p>Your will get call from your's angel soon if your's claim to"
-                            " item is valid.</p><br>"
-                            "<hr><p>Go back to <a href='https://backmyitem.com'>homepage</a></p>"
-                            "")
+        return HttpResponse(
+            "<p>Your request has been proceed.</p><br><p>Your will get call from your's angel soon if your's claim to"
+            " item is valid.</p><br>"
+            "<hr><p>Go back to <a href='https://backmyitem.com'>homepage</a></p>"
+            "")
 
 
 def show_notification(request, notification_id):
     n = UserNotification.objects.get(id=notification_id)
+    title = "Requested by "+n.Name
     context = {
         "n": n,
+        "title" : title,
     }
     n.viewed = True
     n.save()
@@ -231,18 +246,26 @@ def mynotification(request):
 
 
 def read_Notification(request):
+
     n = UserNotification.objects.filter(user=request.user)
+    context = {
+        'full_name': request.user.first_name,
+        'notification': n,
+        'title':"All Notifications"
+    }
     print(type(n))
     return render_to_response("feed/loggedin.html",
-                              {'full_name': request.user.first_name, 'notification': n, })
+                              context)
 
 
 def home_page(request):
-    return render(request, "static_page/about_us.html", {})
+    title = "About BackMyItem"
+    return render(request, "static_page/about_us.html", {"title": title})
 
 
 def privacy_page(request):
-    return render(request, "static_page/privacy.html", {})
+    title = "Privacy of BackMyItem"
+    return render(request, "static_page/privacy.html", {"title": title})
 
 
 class Contact_page(generic.CreateView):
@@ -252,7 +275,8 @@ class Contact_page(generic.CreateView):
 
 
 def TeamPage(request):
-    return render(request, "static_page/our_team.html", {})
+    title = "BackMyItem Team"
+    return render(request, "static_page/our_team.html", {"title": title})
 
 
 def notification_context(request):
