@@ -200,8 +200,10 @@ class RequestItem(generic.CreateView):
         qs = Report_item.objects.filter(id=self.kwargs.get("pk"))
         self.object.user = qs[0].owner
         self.object.save()
-        query_list = Report_item.objects.filter(publish=True)
-        return render(self.request, "feed/index.html", {"object_list": query_list})
+        return HttpResponse("<p>Your request has been proceed.</p><br><p>Your will get call from your's angel soon if your's claim to"
+                            " item is valid.</p><br>"
+                            "<hr><p>Go back to <a href='https://backmyitem.com'>homepage</a></p>"
+                            "")
 
 
 def show_notification(request, notification_id):
