@@ -33,20 +33,13 @@ class Report_item(models.Model):
                               upload_to=get_uplaod_file_name)
 
     def save(self):
-        # Opening the uploaded image
         im = Image.open(self.image)
-
         output = BytesIO()
-
-        # Resize/modify the image
         im = im.resize((500, 500))
-
-        # after modifications, save it to the output
 
         im.save(output, format='JPEG', optimize=True, quality=95)
         output.seek(0)
 
-        # change the imagefield value to be the newley modifed image value
         self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg',
                                           sys.getsizeof(output), None)
 
