@@ -92,7 +92,7 @@
             td {border: 0;}
         .mytable{
            border-collapse: separate;
-            border-spacing: 15px 15px;
+            border-spacing: 15px 1px !important;
             border: 0px !important;
 
         }

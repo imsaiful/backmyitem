@@ -7,7 +7,6 @@
     <style>
 
 
-
         </style>
     <meta charset="utf-8">
     <link rel="stylesheet" href='{% static "css/base.css" %}'>
@@ -30,7 +29,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="{% url 'feed:index' %}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
+        <li class=""><a href="{% url 'feed:index' %}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
         <li><a href="{% url 'feed:report' %}"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Report</a></li>
       </ul>
           {% if user.is_authenticated %}
