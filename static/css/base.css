@@ -227,6 +227,14 @@ footer a:hover{
             color:white;
 }
 
+.navbar-brand
+{
+    position: relative;
+    width: 170px;
+    left: 15px;
+    max-height: 70px; /* height of the navbar */
+}
+
 footer ul li h5 a:hover{
                text-height: 36px;
             color:white;
