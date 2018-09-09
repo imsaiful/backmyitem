@@ -294,13 +294,3 @@ def api_context(request):
         'api_key': key,
     }
 
-
-def tracking_code(request):
-    key_1 = config('tracking_code_1')
-    key_2 = config('tracking_code_2')
-
-    return {
-        'analytic_code_1': key_1,
-        'analytic_code_2': key_2,
-
-    }
