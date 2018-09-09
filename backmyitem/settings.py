@@ -69,6 +69,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'feed.views.notification_context',
                 'feed.views.api_context',
+                'feed.views.tracking_code',
                 'social_django.context_processors.backends',  # <- Here
                 'social_django.context_processors.login_redirect',
             ],

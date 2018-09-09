@@ -221,10 +221,10 @@ class RequestItem(generic.CreateView):
 
 def show_notification(request, notification_id):
     n = UserNotification.objects.get(id=notification_id)
-    title = "Requested by "+n.Name
+    title = "Requested by " + n.Name
     context = {
         "n": n,
-        "title" : title,
+        "title": title,
     }
     n.viewed = True
     n.save()
@@ -246,12 +246,11 @@ def mynotification(request):
 
 
 def read_Notification(request):
-
     n = UserNotification.objects.filter(user=request.user)
     context = {
         'full_name': request.user.first_name,
         'notification': n,
-        'title':"All Notifications"
+        'title': "All Notifications"
     }
     print(type(n))
     return render_to_response("feed/loggedin.html",
@@ -293,4 +292,15 @@ def api_context(request):
     key = config('api_key')
     return {
         'api_key': key,
+    }
+
+
+def tracking_code(request):
+    key_1 = config('tracking_code_1')
+    key_2 = config('tracking_code_2')
+
+    return {
+        'analytic_code_1': key_1,
+        'analytic_code_2': key_2,
+
     }
