@@ -37,10 +37,10 @@ class Report_item(models.Model):
         output = BytesIO()
         im = im.resize((500, 500))
 
-        im.save(output, format='JPEG', optimize=True, quality=95)
+        im.save(output, format='PNG', optimize=True, quality=95)
         output.seek(0)
 
-        self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg',
+        self.image = InMemoryUploadedFile(output, 'ImageField', "%s.png" % self.image.name.split('.')[0], 'image/jpeg',
                                           sys.getsizeof(output), None)
 
         super(Report_item, self).save()
