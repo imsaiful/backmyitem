@@ -64,7 +64,7 @@ class ReportCreate(generic.CreateView):
             form_class = self.get_form_class()
         form = super(ReportCreate, self).get_form(form_class)
         form.fields['title'].widget = TextInput(
-            attrs={'placeholder': '*Enter UID e.g. CBSE Marksheet Roll nunber 0506***'})
+            attrs={'placeholder': '*Enter UID e.g. CBSE Marksheet Roll number 0506***'})
         form.fields['item_type'].widget = TextInput(
             attrs={'placeholder': '*What do you found e.g. marksheet,passport,key,wallet'})
         form.fields['location'].widget = TextInput(

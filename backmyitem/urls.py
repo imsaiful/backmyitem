@@ -16,12 +16,13 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
-from . import settings
+
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.views import password_reset, password_reset_done, password_reset_confirm, \
     password_reset_complete
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
+from . import settings
 
 urlpatterns = [
                   url(r'^admin/', admin.site.urls),

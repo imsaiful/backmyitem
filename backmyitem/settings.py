@@ -29,7 +29,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'backmyitem.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'backmyitem.com','atque.serveo.net']
 
 # Application definition
 
